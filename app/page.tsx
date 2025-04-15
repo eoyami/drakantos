@@ -2,6 +2,7 @@ import Image from "next/image";
 import { GoChevronRight } from "react-icons/go";
 import { GoChevronLeft } from "react-icons/go";
 import { GoChevronUp } from "react-icons/go";
+import Character from "./components/Character";
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col justify-end items-center h-56">
               <GoChevronUp className="text-white text-3xl animate-bounce" />
-            <p className="text-white">Arraste para cima</p>
+            <p className="text-white text-xl">Arraste para cima</p>
             </div>
           </div>
         </div>
@@ -24,25 +25,22 @@ export default function Home() {
           <div className="flex flex-col justify-center items-center mb-4 text-white">
             <h2 className="text-2xl">Conheça os Heróis</h2>
           </div>
-            <div className="flex justify-start items-center gap-3 text-white w-full h-full">
-              <div className="flex flex-col justify-center items-center h-32 w-32 bg-black/30 rounded p-4 hover:bg-white/30 transition duration-300 ease-in-out">
-                <Image src="/ozul.png" width={50} height={50} priority alt="Ozul"/>
-                <div className="flex justify-center pt-2">
-                  <h3>OZUL</h3>
-                </div>
-              </div>
-              <div className="flex flex-col justify-center items-center h-32 w-32 bg-black/30 rounded p-4 hover:bg-white/30 transition duration-300 ease-in-out">
-                <Image src="/ozul.png" width={50} height={50} priority alt="Ozul"/>
-                <div className="flex justify-center pt-2">
-                  <h3>OZUL</h3>
-                </div>
-              </div>
-              <div className="flex flex-col justify-center items-center h-32 w-32 bg-black/30 rounded p-4 hover:bg-white/30 transition duration-300 ease-in-out">
-                <Image src="/ozul.png" width={50} height={50} priority alt="Ozul"/>
-                <div className="flex justify-center pt-2">
-                  <h3>OZUL</h3>
-                </div>
-              </div>
+            <div className="flex justify-center items-center">
+            <div className="flex justify-between items-center gap-3 text-white  flex-wrap">
+              <Character src="/ozul.png" name="Ozul" alt="Ozul"/>
+              <Character src="/arryn.png" name="Arryn" alt="Arryn"/>
+              <Character src="/byron.png" name="Byron" alt="Byron"/>
+              <Character src="/iris.png" name="Iris" alt="Iris"/>
+              <Character src="/kavras.png" name="Kavras" alt="Kavras"/>
+              <Character src="/korz.png" name="Korz" alt="Korz"/>
+              <Character src="/ojore.png" name="Ojore" alt="Ojore"/>
+              <Character src="/ophis.png" name="Ophis" alt="Ophis"/>
+              <Character src="/orbryn.png" name="Orbryn" alt="Orbryn"/>
+              <Character src="/reya.png" name="Reya" alt="Reya"/>
+              <Character src="/thomas.png" name="Thomas" alt="Thomas"/>
+              <Character src="/urijor.png" name="Urijor" alt="Urijor"/>
+            </div>
+            </div>
               {/* <div className="flex flex-col items-center justify-center text-white text-3xl">
                 <GoChevronLeft className="bg-black/30 rounded-full hover:bg-white/30 hover:cursor-pointer"/>
               </div>
@@ -69,7 +67,6 @@ export default function Home() {
               <div className="flex flex-col items-center justify-center text-white text-3xl">
                 <GoChevronRight className="bg-black/30 rounded-full hover:bg-white/30 hover:cursor-pointer"/>
               </div> */}
-            </div>
         </div>
     </main>
   );
