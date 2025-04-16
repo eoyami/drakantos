@@ -14,6 +14,9 @@ export default function Home() {
               <video autoPlay muted loop width={700}>
                 <source src="/background.mp4" />
               </video>
+              {/* <div>
+              <iframe className="" width={640} height={360} src="https://www.youtube.com/embed/CCXVQxJkBtQ?si=8zw2lnf7nDYetGJE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+              </div> */}
             </div>
             <div className="flex flex-col justify-end items-center h-56">
               <GoChevronUp className="text-white text-3xl animate-bounce" />
@@ -26,19 +29,19 @@ export default function Home() {
             <h2 className="text-2xl">Conheça os Heróis</h2>
           </div>
             <div className="flex justify-center items-center">
-            <div className="flex justify-center items-center gap-3 text-white  flex-wrap">
-              <Character src="/ozul.png" name="Ozul" alt="Ozul"/>
-              <Character src="/arryn.png" name="Arryn" alt="Arryn"/>
-              <Character src="/byron.png" name="Byron" alt="Byron"/>
-              <Character src="/iris.png" name="Iris" alt="Iris"/>
-              <Character src="/kavras.png" name="Kavras" alt="Kavras"/>
-              <Character src="/korz.png" name="Korz" alt="Korz"/>
-              <Character src="/ojore.png" name="Ojore" alt="Ojore"/>
-              <Character src="/ophis.png" name="Ophis" alt="Ophis"/>
-              <Character src="/orbryn.png" name="Orbryn" alt="Orbryn"/>
-              <Character src="/reya.png" name="Reya" alt="Reya"/>
-              <Character src="/thomas.png" name="Thomas" alt="Thomas"/>
-              <Character src="/urijor.png" name="Urijor" alt="Urijor"/>
+            <div className="flex justify-center items-center gap-3 text-white flex-wrap">
+              <Character src="/ozul.png" name="Ozul" alt="Ozul" type="dps"/>
+              <Character src="/arryn.png" name="Arryn" alt="Arryn" type="dps"/>
+              <Character src="/byron.png" name="Byron" alt="Byron" type="support"/>
+              <Character src="/iris.png" name="Iris" alt="Iris" type="tank"/>
+              <Character src="/kavras.png" name="Kavras" alt="Kavras" type="support"/>
+              <Character src="/korz.png" name="Korz" alt="Korz" type="tank"/>
+              <Character src="/ojore.png" name="Ojore" alt="Ojore" type="tank"/>
+              <Character src="/ophis.png" name="Ophis" alt="Ophis" type="dps"/>
+              <Character src="/orbryn.png" name="Orbryn" alt="Orbryn" type="dps"/>
+              <Character src="/reya.png" name="Reya" alt="Reya" type="dps"/>
+              <Character src="/thomas.png" name="Thomas" alt="Thomas" type="support"/>
+              <Character src="/urijor.png" name="Urijor" alt="Urijor" type="tank"/>
             </div>
             </div>
               {/* <div className="flex flex-col items-center justify-center text-white text-3xl">
