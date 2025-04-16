@@ -1,17 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
-
-
+import { CharacterProps } from './Character'
 type ModalProps = {
     isOpen: boolean,
     onClose: () => void,
-    character: {
-        id: number,
-        name: string,
-        description: string,
-        type: string,
-        image: string,
-    } | null
+    character: CharacterProps | null
 }
 
 const Modal = ({isOpen, onClose, character}: ModalProps) => {
@@ -24,9 +17,9 @@ const Modal = ({isOpen, onClose, character}: ModalProps) => {
           {character && (
             <>
             <h1>{character.name}</h1>
-            <h1>{character.description}</h1>
+            <h1>{character.alt}</h1>
             <h1>{character.type}</h1>
-            <Image src={character.image} width={200} height={100} alt=''/>
+            <Image src={character.src} width={200} height={100} alt=''/>
             </>
           )}
           </div>
