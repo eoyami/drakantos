@@ -8,8 +8,8 @@ export default function Home() {
   return (
       <main className="bg-black pb-4">
         <div className="flex flex-col justify-center items-center w-full bg-[url('/background_coliseu.png')] bg-cover bg-center bg-no-repeat" >
-          <div className="flex flex-col h-screen justify-center items-center bg-linear-to-t from-black to-transparente w-full">
-            <h1 className="text-white text-3xl text-shadow-md">Um MMORPG pixel art brasileiro com heróis únicos e ação em tempo real</h1>
+          <div className="flex flex-col h-screen justify-center items-center bg-linear-to-t from-black to-transparente w-full p-2">
+            <h1 className="text-center text-white text-2xl text-shadow-md">Um MMORPG pixel art brasileiro com heróis únicos e ação em tempo real</h1>
             <div className="flex justify-center items-center mt-4 bg-black/30 p-4 rounded">
               <video autoPlay muted loop width={700}>
                 <source src="/background.mp4" />
@@ -26,7 +26,7 @@ export default function Home() {
             <h2 className="text-2xl">Conheça os Heróis</h2>
           </div>
             <div className="flex justify-center items-center">
-            <div className="flex justify-between items-center gap-3 text-white  flex-wrap">
+            <div className="flex justify-center items-center gap-3 text-white  flex-wrap">
               <Character src="/ozul.png" name="Ozul" alt="Ozul"/>
               <Character src="/arryn.png" name="Arryn" alt="Arryn"/>
               <Character src="/byron.png" name="Byron" alt="Byron"/>
