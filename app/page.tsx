@@ -1,6 +1,6 @@
-import Image from "next/image";
-import { GoChevronRight } from "react-icons/go";
-import { GoChevronLeft } from "react-icons/go";
+// import Image from "next/image";
+// import { GoChevronRight } from "react-icons/go";
+// import { GoChevronLeft } from "react-icons/go";
 import { GoChevronUp } from "react-icons/go";
 import Character from "./components/Character";
 

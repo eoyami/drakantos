@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Drakantos",
-  description: "Drakantos",
+  title: "Drakantos Non-Official Site",
+  description: "Drakantos Non-Official Site",
 };
 
 export default function RootLayout({
