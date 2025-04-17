@@ -14,7 +14,7 @@ const Tooltip = ({label, children}: TooltipProps) => {
         {children}
         {isVisible && (
             <div className='absolute tooltip -top-10 -left-3 bg-black/30 p-2 rounded'>
-            <p>{label}</p>
+            <p>{label.toUpperCase()}</p>
         </div>
         )}
         

@@ -119,11 +119,11 @@ type CharacterProps = {
     },
     {
       id: 13,
-      name: "Faendar",
+      name: "faendar",
       smallImg: "/faendar.png",
       bigImg: "/faendar_big.png",
       alt: "faendar",
-      type: "tank",
+      type: "support",
       description: "PLACEHOLDER",
     },
     {
@@ -132,7 +132,7 @@ type CharacterProps = {
       smallImg: "/irhaal.png",
       bigImg: "/irhaal_big.png",
       alt: "irhaal",
-      type: "tank",
+      type: "dps",
       description: "PLACEHOLDER",
     },
     {
@@ -186,7 +186,7 @@ type CharacterProps = {
       smallImg: "/zeugladius.png",
       bigImg: "/zeugladius_big.png",
       alt: "zeugladius",
-      type: "tank",
+      type: "support",
       description: "PLACEHOLDER",
     },
   ];
