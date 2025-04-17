@@ -48,7 +48,7 @@ export default function Home() {
         <div className="flex justify-center items-center">
           <div className="flex justify-center items-center gap-3 text-white flex-wrap">
                 {characters.map((character) => (
-                    <Character key={character.id} id={character.id} src={character.src} name={character.name} alt={character.alt} type={character.type} OpenModal={() => {handleOpenModal(character)}} />
+                    <Character key={character.id} id={character.id} smallImg={character.smallImg} bigImg="" description={character.description} name={character.name} alt={character.alt} type={character.type} OpenModal={() => {handleOpenModal(character)}} />
                 ))}
           </div>
         </div>

@@ -1,6 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
 import { CharacterProps } from './Character'
+import { FaShieldAlt, FaPlus, FaQuestion } from "react-icons/fa";
+import { GiCrossedSwords } from "react-icons/gi";
+import { MdClose } from "react-icons/md";
 type ModalProps = {
     isOpen: boolean,
     onClose: () => void,
@@ -9,18 +12,38 @@ type ModalProps = {
 
 const Modal = ({isOpen, onClose, character}: ModalProps) => {
     if (!isOpen) return null
+
+    const renderIcon = () => {
+        switch(character?.type){
+          case "tank":
+            return <FaShieldAlt className="text-white text-2xl" />;
+          case "support":
+            return <FaPlus className="text-white text-2xl" />;
+          case "dps":
+            return <GiCrossedSwords className="text-white text-2xl" />;
+          default:
+            return <FaQuestion className="text-white text-2xl" />;
+        }
+      }
+
   return (
     <div id="modal" className="fixed top-0 left-0 w-full h-screen z-10">
         <div className="flex flex-col justify-center items-center bg-black/30 h-full">
-          <div className="relative flex justify-center items-center h-96 w-96 bg-black text-white">
-          <button className='absolute top-0 right-0 text-white' onClick={() => {onClose()}}>X</button>
+          <div className="relative flex justify-center items-center h-[35rem] mid:w-[55rem] bg-black/80 text-white xsm:w-full" >
+          <button className='absolute top-0 right-0 text-white text-4xl' onClick={() => {onClose()}}><MdClose /></button>
           {character && (
-            <>
-            <h1>{character.name}</h1>
-            <h1>{character.alt}</h1>
-            <h1>{character.type}</h1>
-            <Image src={character.src} width={200} height={100} alt=''/>
-            </>
+            <div className='flex overflow-hidden justify-center items-center h-full w-full'>
+            <div className='flex max-w-96'>
+            <Image src={character.bigImg} width={300} height={500} alt=''/>
+            </div>
+            <div className='flex flex-col justify-center items-center h-full w-96 p-4'>
+              <h1 className='text-3xl'>{character.name}</h1>
+              <h1>{character.description}</h1>
+              <h1>{character.type.toUpperCase()}</h1>
+              {renderIcon()}
+            </div>
+            
+            </div>
           )}
           </div>
           

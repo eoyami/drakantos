@@ -11,13 +11,15 @@ import Tooltip from './Tooltip';
 export type CharacterProps = {
   id: number,
   name: string,
-  src: string,
+  smallImg: string,
+  bigImg: string,
   alt: string,
   type: "support" | "tank" | "dps" | "none",
+  description: string,
   OpenModal: (character: CharacterProps) => void
 }
 
-const Character = ({id, name, src, alt, type, OpenModal}: CharacterProps) => {
+const Character = ({id, name, smallImg, bigImg, alt, type, description, OpenModal}: CharacterProps) => {
 
   const renderIcon = () => {
     switch(type){
@@ -34,9 +36,9 @@ const Character = ({id, name, src, alt, type, OpenModal}: CharacterProps) => {
 
   return (
     <>
-          <div key={id} className="flex flex-col justify-center items-center h-40 w-40 bg-black/30 rounded p-2 hover:bg-white/30 transition ease-in-out hover:cursor-pointer" onClick={() => OpenModal({ id, name, src, alt, type, OpenModal })}>
+          <div key={id} className="flex flex-col justify-center items-center h-40 w-40 bg-black/30 rounded p-2 hover:bg-white/30 transition ease-in-out hover:cursor-pointer" onClick={() => OpenModal({ id, name, smallImg, description, bigImg, alt, type, OpenModal })}>
             <div className='flex flex-col justify-center items-center h-full min-h-24 max-h-24'>
-              <Image src={src} width={55} height={70} priority alt={alt} />
+              <Image src={smallImg} width={55} height={70} priority alt={alt} />
               <div className='flex flex-col items-center justify-center h-full'>
                 <div className='relative'>
                     <Tooltip label={type}>
