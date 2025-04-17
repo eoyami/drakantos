@@ -28,19 +28,21 @@ const Modal = ({isOpen, onClose, character}: ModalProps) => {
 
   return (
     <div id="modal" className="fixed top-0 left-0 w-full h-screen z-10">
-        <div className="flex flex-col justify-center items-center bg-black/30 h-full">
-          <div className="relative flex justify-center items-center h-[35rem] mid:w-[55rem] bg-black/80 text-white xsm:w-full" >
+        <div className="flex flex-col justify-center items-center bg-black/50 h-full" onClick={() => {onClose()}}>
+          <div className="relative flex justify-center items-center h-[35rem] mid:w-[55rem] bg-black/80 text-white xsm:w-full m-4" >
           <button className='absolute top-0 right-0 text-white text-4xl' onClick={() => {onClose()}}><MdClose /></button>
           {character && (
             <div className='flex overflow-hidden justify-center items-center h-full w-full'>
             <div className='flex max-w-96'>
             <Image src={character.bigImg} width={300} height={500} alt=''/>
             </div>
-            <div className='flex flex-col justify-center items-center h-full w-96 p-4'>
+            <div className='flex flex-col justify-center items-center h-full w-96 p-4 gap-10'>
               <h1 className='text-3xl'>{character.name}</h1>
               <h1>{character.description}</h1>
+              <div className='flex flex-col justify-center items-center'>
               <h1>{character.type.toUpperCase()}</h1>
               {renderIcon()}
+              </div>
             </div>
             
             </div>

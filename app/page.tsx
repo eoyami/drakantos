@@ -27,13 +27,13 @@ export default function Home() {
       <div className="flex flex-col justify-center items-center w-full bg-[url('/background_coliseu.png')] bg-cover bg-center bg-no-repeat" >
         <div className="flex flex-col h-screen justify-center items-center bg-linear-to-t from-black to-transparente w-full p-2">
           <h1 className="text-center text-white text-2xl text-shadow-md">Um MMORPG pixel art brasileiro com heróis únicos e ação em tempo real</h1>
-          <div className="flex justify-center items-center mt-4 bg-black/30 p-4 rounded">
-            <video autoPlay muted loop width={700}>
+          <div className="flex justify-center items-center mt-4 bg-black/30 p-4 w-full md:size-min">
+            {/* <video autoPlay muted loop width={700}>
               <source src="/background.mp4" />
-            </video>
-            {/* <div>
-              <iframe className="" width={640} height={360} src="https://www.youtube.com/embed/CCXVQxJkBtQ?si=8zw2lnf7nDYetGJE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-              </div> */}
+            </video> */}
+            <div className="w-full h-full">
+              <iframe className="md:w-[640px] md:h-[360px] h-[200px]" width="100%" height="100%" src="https://www.youtube.com/embed/CCXVQxJkBtQ?si=8zw2lnf7nDYetGJE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+              </div>
           </div>
           <div className="flex flex-col justify-end items-center h-56">
             <GoChevronUp className="text-white text-3xl animate-bounce" />
