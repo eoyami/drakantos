@@ -1,6 +1,7 @@
 "use client"
 
 import { GoChevronUp } from "react-icons/go";
+import { GoChevronDown } from "react-icons/go";
 import Character from "./components/Character";
 import Modal from "./components/Modal";
 import { useState } from "react";
@@ -22,22 +23,25 @@ export default function Home() {
     }
 
   return (
-    <main className="bg-black pb-4">
+    <main className="flex flex-col bg-black pb-4">
       <Modal isOpen={isModalOpen} character={selectedCharacter} onClose={handleCloseModal} />
       <div className="flex flex-col justify-center items-center w-full bg-[url('/background_coliseu.png')] bg-cover bg-center bg-no-repeat" >
-        <div className="flex flex-col h-screen justify-center items-center bg-linear-to-t from-black to-transparente w-full p-2">
-          <h1 className="text-center text-white text-2xl text-shadow-md">Um MMORPG pixel art brasileiro com heróis únicos e ação em tempo real</h1>
-          <div className="flex justify-center items-center mt-4 bg-black/30 p-4 w-full md:size-min">
-            {/* <video autoPlay muted loop width={700}>
-              <source src="/background.mp4" />
-            </video> */}
+        <div className="flex flex-col items-center bg-linear-to-t from-black to-transparent w-full p-2">
+          <div className="flex flex-col justify-center items-center w-full h-screen">
+          <h1 id="frase" className="text-center text-white text-xl lg:text-2xl text-shadow-md lg:mt-[10rem] mt-[2rem]">Um MMORPG pixel art brasileiro com heróis únicos e ação em tempo real</h1>
+          <div className="flex justify-center items-center mt-4 bg-black/30 p-4">
             <div className="w-full h-full">
-              <iframe className="md:w-[640px] md:h-[360px] h-[200px]" width="100%" height="100%" src="https://www.youtube.com/embed/CCXVQxJkBtQ?si=8zw2lnf7nDYetGJE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+              <iframe className="lg:min-w-[640px] md:max-w-[500px] lg:min-h-[360px] md:max-h-[250px] w-[640px] h-[360px] w-full" width="100%" height="100%" src="https://www.youtube.com/embed/CCXVQxJkBtQ?si=8zw2lnf7nDYetGJE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
               </div>
           </div>
-          <div className="flex flex-col justify-end items-center h-56">
+          <div className="hidden md:flex flex-col justify-center md:justify-start items-center h-56 lg:mt-auto">
+            <p className="text-white text-xl">Deslize para baixo</p>
+            <GoChevronDown className="text-white text-3xl animate-bounce mt-1" />
+          </div>
+          <div className="flex md:hidden flex-col justify-center md:justify-start items-center h-56 lg:mt-auto">
             <GoChevronUp className="text-white text-3xl animate-bounce" />
             <p className="text-white text-xl">Arraste para cima</p>
+          </div>
           </div>
         </div>
       </div>
