@@ -37,7 +37,7 @@ const Modal = ({isOpen, onClose, character}: ModalProps) => {
             <Image src={character.bigImg} width={300} height={500} alt=''/>
             </div>
             <div className='flex flex-col justify-center items-center h-full w-96 p-4 gap-10'>
-              <h1 className='text-3xl'>{character.name}</h1>
+              <h1 className='text-3xl'>{character.name.toUpperCase()}</h1>
               <h1>{character.description}</h1>
               <div className='flex flex-col justify-center items-center'>
               <h1>{character.type.toUpperCase()}</h1>

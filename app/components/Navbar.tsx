@@ -19,7 +19,7 @@ const Navbar = () => {
             </div>
         </div>
     </nav>
-    <div className='fixed top-0 flex justify-center items-center md:hidden w-full px-4 bg-[#171717]'>
+    <div className='fixed top-0 flex justify-center items-center md:hidden w-full px-4 bg-[#171717] z-10'>
             <div className='mr-auto'>
             <AiOutlineMenu className='text-white text-3xl' />
             </div>
