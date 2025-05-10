@@ -30,7 +30,7 @@ const Modal = ({isOpen, onClose, character}: ModalProps) => {
     <div id="modal" className="fixed top-0 left-0 w-full h-screen z-10">
         <div className="flex flex-col justify-center items-center bg-black/50 h-full p-4" onClick={() => {onClose()}}>
           <div className="relative flex justify-center items-center h-[35rem] mid:w-[55rem] bg-black/80 text-white" >
-          <button className='absolute top-0 right-0 text-white text-4xl' onClick={() => {onClose()}}><MdClose /></button>
+          <button className='absolute top-0 right-0 text-white text-4xl hover:cursor-pointer' onClick={() => {onClose()}}><MdClose /></button>
           {character && (
             <div className='flex overflow-hidden justify-center items-center h-full w-full rounded'>
             <div className='flex max-w-96'>

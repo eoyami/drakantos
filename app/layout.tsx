@@ -32,6 +32,9 @@ export default function RootLayout({
       <Navbar/>
       {children}
       <Analytics/>
+      <footer className="text-white text-center p-4">
+        Drakantos Non-Official Site | 2025
+      </footer>
       </body>
     </html>
   );
