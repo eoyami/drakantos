@@ -17,8 +17,8 @@ export default function Home() {
     setIsModalOpen(false);
   }
 
-  const handleOpenModal = (character: Omit<CharacterProps, "OpenModal">) => {
-      setSelectedCharacter({ ...character, OpenModal: () => {} })
+  const handleOpenModal = (character: Omit<CharacterProps, "onClick">) => {
+      setSelectedCharacter({ ...character})
       setIsModalOpen(true);
     }
 
@@ -52,7 +52,7 @@ export default function Home() {
         <div className="flex justify-center items-center">
           <div className="flex justify-center items-center gap-3 text-white flex-wrap">
                 {characters.map((character) => (
-                    <Character key={character.id} id={character.id} smallImg={character.smallImg} bigImg="" description={character.description} name={character.name} alt={character.alt} type={character.type} OpenModal={() => {handleOpenModal(character)}} />
+                    <Character key={character.id} id={character.id} smallImg={character.smallImg} bigImg="" description={character.description} name={character.name} alt={character.alt} type={character.type} onClick={() => {handleOpenModal(character)}} />
                 ))}
           </div>
         </div>

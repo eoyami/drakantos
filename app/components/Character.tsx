@@ -14,11 +14,11 @@ export type CharacterProps = {
   bigImg: string,
   alt: string,
   type: "support" | "tank" | "dps" | "none",
-  description: string,
-  OpenModal: (character: CharacterProps) => void
+  description?: string,
+  onClick?: () => void
 }
 
-const Character = ({id, name, smallImg, bigImg, alt, type, description, OpenModal}: CharacterProps) => {
+const Character = ({id, name, smallImg, alt, type, onClick}: CharacterProps) => {
 
   const renderIcon = () => {
     switch(type){
@@ -35,7 +35,7 @@ const Character = ({id, name, smallImg, bigImg, alt, type, description, OpenModa
 
   return (
     <>
-          <div key={id} className="flex flex-col justify-center items-center h-40 w-40 bg-black/30 rounded p-2 hover:bg-[#F4CF8B]/30 transition ease-in-out hover:cursor-pointer" onClick={() => OpenModal({ id, name, smallImg, description, bigImg, alt, type, OpenModal })}>
+          <div key={id} className="flex flex-col justify-center items-center h-40 w-40 bg-black/30 rounded p-2 hover:bg-[#F4CF8B]/30 transition ease-in-out hover:cursor-pointer" onClick={onClick}>
             <div className='flex flex-col justify-center items-center h-full min-h-24 max-h-24'>
               <Image src={smallImg} width={55} height={70} priority alt={alt} />
               <div className='flex flex-col items-center justify-center h-full'>

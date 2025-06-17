@@ -4,6 +4,7 @@ import { CharacterProps } from './Character'
 import { FaShieldAlt, FaPlus, FaQuestion } from "react-icons/fa";
 import { GiCrossedSwords } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
+
 type ModalProps = {
     isOpen: boolean,
     onClose: () => void,
