@@ -1,7 +1,22 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { AiOutlineMenu } from "react-icons/ai";
+
 const Navbar = () => {
+    
+    const [isFixed, setIsFixed] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+        setIsFixed(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
   return (
     <>
     <nav className="hidden md:flex justify-center items-center bg-[#171717] text-white font-bold h-16 w-full z-10">
@@ -19,7 +34,8 @@ const Navbar = () => {
             </div>
         </div>
     </nav>
-    <div className='fixed top-0 flex justify-center items-center md:hidden w-full px-4 bg-[#171717] z-10'>
+
+    <div className={`${isFixed ? 'fixed top-0' : 'static'} flex justify-center items-center md:hidden w-full px-4 bg-[#171717] z-10 `}>
             <div className='mr-auto'>
             <AiOutlineMenu className='text-white text-3xl' />
             </div>
