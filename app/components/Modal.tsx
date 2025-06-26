@@ -33,7 +33,7 @@ const Modal = ({isOpen, onClose, character}: ModalProps) => {
           <div className="relative flex justify-center items-center bg-black/80 text-white" >
           <button className='absolute top-0 right-0 text-white text-4xl hover:cursor-pointer' onClick={() => {onClose()}}><MdClose /></button>
           {character && (
-            <div className='flex flex-col md:flex-row overflow-hidden justify-center items-center h-full w-full rounded'>
+            <div className='flex flex-col md:flex-row overflow-hidden justify-center items-center h-full w-80 md:w-full rounded'>
             <div className="relative w-96 max-w-full aspect-square mx-auto">
               <Image
                 src={character.bigImg}
