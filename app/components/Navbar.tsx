@@ -66,10 +66,10 @@ const Navbar = () => {
             </div> 
                 <div ref={menuRef} className={`fixed top-12 z-10 w-full bg-[#171717] transform transition-all duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}>
                     <ul className='flex flex-col text-white'>
-                        <Link className='py-2 px-4 border-b border-white w-full' href="/#" onClick={handleMenu}>Início</Link>
-                        <Link className='py-2 px-4 border-b border-white w-full' href="/#" onClick={handleMenu}>História</Link>
-                        <Link className='py-2 px-4 border-b border-white w-full' href="/#" onClick={handleMenu}>Galeria</Link>
-                        <Link className='py-2 px-4 border-b border-white w-full' href="/#" onClick={handleMenu}>Sistemas</Link>
+                        <Link className='py-2 px-4 border-b border-white w-full' href="/" onClick={handleMenu}>Início</Link>
+                        <Link className='py-2 px-4 border-b border-white w-full' href="/historia" onClick={handleMenu}>História</Link>
+                        <Link className='py-2 px-4 border-b border-white w-full' href="/galeria" onClick={handleMenu}>Galeria</Link>
+                        <Link className='py-2 px-4 border-b border-white w-full' href="/sistemas" onClick={handleMenu}>Sistemas</Link>
                     </ul>
                 </div>
     </div>
