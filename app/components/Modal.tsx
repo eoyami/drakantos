@@ -34,25 +34,24 @@ const Modal = ({isOpen, onClose, character}: ModalProps) => {
           <button className='absolute top-0 right-0 text-white text-4xl hover:cursor-pointer' onClick={() => {onClose()}}><MdClose /></button>
           {character && (
             <div className='flex flex-col md:flex-row overflow-hidden justify-center items-center h-full w-80 md:w-full rounded'>
-            <div className="relative w-96 max-w-full aspect-square mx-auto">
-              <Image
-                src={character.bigImg}
-                alt={character.alt}
-                fill
-                style={{ objectFit: 'contain' }}
-                sizes="(max-width: 640px) 100vw, 224px"
-                priority
-              />
-            </div>
-            <div className='flex flex-col justify-center items-center h-full w-full p-4 gap-3'>
-              <h1 className='text-3xl'>{character.name.toUpperCase()}</h1>
-              <h1 className='text-center'>{character.description}</h1>
-              <div className='flex flex-col justify-center items-center'>
-              <h1>{character.type.toUpperCase()}</h1>
-              {renderIcon()}
+              <div className="relative w-96 max-w-full aspect-square mx-auto">
+                <Image
+                  src={character.bigImg}
+                  alt={character.alt}
+                  fill
+                  style={{ objectFit: 'contain' }}
+                  sizes="(max-width: 640px) 100vw, 224px"
+                  priority
+                />
               </div>
-            </div>
-            
+              <div className='flex flex-col justify-center items-center h-full md:w-96 w-full p-4 gap-3'>
+                <h1 className='text-3xl'>{character.name.toUpperCase()}</h1>
+                <h1 className='text-center'>{character.description}</h1>
+                <div className='flex flex-col justify-center items-center'>
+                <h1>{character.type.toUpperCase()}</h1>
+                {renderIcon()}
+                </div>
+              </div>
             </div>
           )}
           </div>

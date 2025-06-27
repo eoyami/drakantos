@@ -18,7 +18,6 @@ const Navbar = () => {
             }
         }
 
-
         const handleScroll = () => {
         setIsFixed(window.scrollY > 50)
     }
