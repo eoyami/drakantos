@@ -3,17 +3,21 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { AiOutlineMenu } from "react-icons/ai";
+import Link from 'next/link';
 
 const Navbar = () => {
     
     const [isFixed, setIsFixed] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const  menuRef = useRef<HTMLDivElement>(null)
+    const buttonRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-
         const handleClickOutside = (event: MouseEvent) => {
-            if(menuRef.current && !menuRef.current.contains(event.target as Node)){
+            if (
+                menuRef.current && !menuRef.current.contains(event.target as Node) &&
+                buttonRef.current && !buttonRef.current.contains(event.target as Node)
+            ) {
                 setIsMenuOpen(false)
             }
         }
@@ -54,8 +58,8 @@ const Navbar = () => {
         </div>
     </nav>
     <div className={`${isFixed ? 'fixed top-0' : 'static'} flex justify-center items-center md:hidden w-full px-4 bg-[#171717] z-11`}>
-            <div className='mr-auto'>
-            <AiOutlineMenu className='text-white text-3xl' onClick={handleMenu} />
+            <div className='mr-auto' ref={buttonRef}>
+            <AiOutlineMenu className='text-white text-3xl'  onClick={handleMenu} />
             </div>
             <div className='flex justify-center items-center w-full'>
             <Image className='flex' src="/drakantos_logo2.png" width={250} height={50} alt=""></Image>
@@ -64,11 +68,11 @@ const Navbar = () => {
 
             {isMenuOpen ? (
                 <div ref={menuRef} className='absolute top-12 z-10 w-full bg-[#171717] fixed'>
-                    <ul className='text-white'>
-                        <li className='py-2 px-4 border-b-1 border-white'>Início</li>
-                        <li className='py-2 px-4 border-b-1 border-white'>História</li>
-                        <li className='py-2 px-4 border-b-1 border-white'>Galeria</li>
-                        <li className='py-2 px-4'>Sistemas</li>
+                    <ul className='flex flex-col text-white'>
+                        <Link className='py-2 px-4 border-b-1 border-white w-full' href="/#" onClick={handleMenu}>Início</Link>
+                        <Link className='py-2 px-4 border-b-1 border-white w-full' href="/#" onClick={handleMenu}>História</Link>
+                        <Link className='py-2 px-4 border-b-1 border-white w-full' href="/#" onClick={handleMenu}>Galeria</Link>
+                        <Link className='py-2 px-4 border-b-1 border-white w-full' href="/#" onClick={handleMenu}>Sistemas</Link>
                     </ul>
                 </div>
             ) : null}
