@@ -45,15 +45,15 @@ const Navbar = () => {
     <nav className="hidden md:flex justify-center items-center bg-[#171717] text-white font-bold h-16 w-full z-10">
         <div className="hidden md:flex">
             <div className='hidden md:flex p-4 space-x-4'>
-                <a href="/" className="hover:text-[#F4CF8B]">Início</a>
-                <a href="/" className="hover:text-[#F4CF8B]">História</a>
+                <Link className='hover:text-[#F4CF8B]' href="/" onClick={handleMenu}>Início</Link>
+                <Link className='hover:text-[#F4CF8B]' href="/historia" onClick={handleMenu}>História</Link>
             </div>
             <div id='logo' className='relative w-[300px]'>
                 <Image className='absolute top-0' src="/drakantos_logo.png" width={300} height={100} alt=""></Image>
             </div>
             <div className='hidden md:flex p-4 space-x-4'>
-                <a href="/" className="hover:text-[#F4CF8B]">Galeria</a>
-                <a href="/" className="hover:text-[#F4CF8B]">Sistemas</a>
+                <Link className='hover:text-[#F4CF8B]' href="/galeria" onClick={handleMenu}>Galeria</Link>
+                <Link className='hover:text-[#F4CF8B]' href="/sistemas" onClick={handleMenu}>Sistemas</Link>
             </div>
         </div>
     </nav>
