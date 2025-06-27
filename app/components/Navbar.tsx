@@ -64,18 +64,14 @@ const Navbar = () => {
             <div className='flex justify-center items-center w-full'>
             <Image className='flex' src="/drakantos_logo2.png" width={250} height={50} alt=""></Image>
             </div> 
-
-
-            {isMenuOpen ? (
-                <div ref={menuRef} className='absolute top-12 z-10 w-full bg-[#171717] fixed'>
+                <div ref={menuRef} className={`fixed top-12 z-10 w-full bg-[#171717] transform transition-all duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}>
                     <ul className='flex flex-col text-white'>
-                        <Link className='py-2 px-4 border-b-1 border-white w-full' href="/#" onClick={handleMenu}>Início</Link>
-                        <Link className='py-2 px-4 border-b-1 border-white w-full' href="/#" onClick={handleMenu}>História</Link>
-                        <Link className='py-2 px-4 border-b-1 border-white w-full' href="/#" onClick={handleMenu}>Galeria</Link>
-                        <Link className='py-2 px-4 border-b-1 border-white w-full' href="/#" onClick={handleMenu}>Sistemas</Link>
+                        <Link className='py-2 px-4 border-b border-white w-full' href="/#" onClick={handleMenu}>Início</Link>
+                        <Link className='py-2 px-4 border-b border-white w-full' href="/#" onClick={handleMenu}>História</Link>
+                        <Link className='py-2 px-4 border-b border-white w-full' href="/#" onClick={handleMenu}>Galeria</Link>
+                        <Link className='py-2 px-4 border-b border-white w-full' href="/#" onClick={handleMenu}>Sistemas</Link>
                     </ul>
                 </div>
-            ) : null}
     </div>
     
     </>
