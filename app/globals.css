@@ -18,6 +18,15 @@ html {
   font-size: 1.1rem;
   line-height: 1.75rem;
   margin: 1rem 0;
+  background-color: rgba(23, 23, 23, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0.5rem 0;
 }
 
 .imagem {
@@ -26,4 +35,8 @@ html {
 
 .indice {
   font-size: 1.1rem;
+}
+
+.paragrafo > ul > li {
+  margin: 0.5rem 0;
 }
