@@ -4,12 +4,12 @@ import mundoAberto from '../../public/mundo-aberto.png'
 import mundoDrakantos from '../../public/mundo-drakantos.png'
 import matchmaking from '../../public/matchmaking.png'
 import Link from 'next/link'
-Link
+import Foooter from '../components/Footer';
 
 const page = () => {
   return (
-          <div className="flex flex-col justify-center items-center w-full min-h-screen relative" >
-            <div className="absolute top-0 w-full min-h-screen bg-[url('/background_coliseu.png')] bg-cover bg-no-repeat sm:bg-fixed">
+          <div className="flex flex-col justify-center items-center w-full min-h-screen" >
+            <div className=" w-full min-h-screen bg-[url('/background_coliseu.png')] bg-cover bg-no-repeat sm:bg-fixed">
             <div className="flex flex-col items-center w-full p-2">
               <div>
                 <h1 id="frase" className="text-center text-white text-3xl text-shadow-md lg:mt-[10rem] mt-[2rem]">Sistemas</h1>

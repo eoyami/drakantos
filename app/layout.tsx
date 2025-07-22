@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth`}
       >
-      <div id="container">
+      <div id="container" className="flex flex-col min-h-screen">
         <Navbar/>
         {children}
         <Analytics/>
