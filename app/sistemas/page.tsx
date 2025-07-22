@@ -162,6 +162,7 @@ const page = () => {
                     Para evitar filas e longos tempos de espera no futuro, quando você escolhe uma missão, ela começará automaticamente após alguns segundos. Se outros jogadores também estiverem tentando fazer a mesma missão, você se juntará a eles. Caso contrário, você irá sozinho ou com quantas pessoas também estiverem procurando.
                   </p>
                   <p>A fila padrão é para 3 jogadores, mas a missão começará independentemente de encontrar outros jogadores. Nesse caso, jogadores podem se juntar a você até alguns minutos após o início da missão, entrando como reforços (ou você pode se juntar à missão de outra pessoa que já tenha começado).</p>
+                  <p>Detalhe, caso você tenha um grupo de 4 amigos (máximo de vagas disponível em um grupo), você ainda poderá fazer as missões com 4 pessoas.</p>
                   <p>
                     A dificuldade dos inimigos escala com o número de jogadores para manter níveis de desafio consistentes. Essa escalabilidade também ajusta se jogadores saírem ou desconectarem durante a missão.
                   </p>
