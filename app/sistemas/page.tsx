@@ -54,15 +54,6 @@ const page = () => {
                     <p>No começo do jogo, cada personagem terá seu próprio prólogo, mostrando um pouco sobre sua história, personalidade e como eles se envolvem na história principal (os vilões terão uma parte separada, mas explicaremos isso em outro momento). Isso significa que o início da sua jornada será único, dependendo do personagem que você escolher. Eventualmente, os jogadores chegarão a Fairdale, a vila "inicial" no mundo aberto. Projetamos isso dessa forma para facilitar a conexão entre amigos e evitar o problema de começar em regiões diferentes.</p>
 
                     <h4>Quests:</h4>
-                    <p>
-                      Depois de experimentar outros MMORPGs, concluímos que não gostamos mais de fazer missões lineares de "interagir aqui e ali", muitas vezes obrigatórias para subir de nível. Por isso, em Drakantos, as missões terão um propósito real e as recompensas não serão apenas ouro e experiência. Elas incluirão desbloqueio de sistemas, lojas, artefatos, ferramentas de exploração (como um gancho de escalada para acessar novos locais) e assim por diante.
-
-                    Também teremos muitas missões secundárias e histórias específicas para certos personagens. Por exemplo, uma certa missão pode exigir conhecimento de Magia, então apenas personagens da categoria mago poderão completá-la.
-
-                    É importante notar que essas missões oferecem progressão horizontal, ou seja, completar uma missão com um personagem contará para toda a sua conta.
-                    </p>
-
-                    <h4>Quests:</h4>
                     <p>Depois de experimentar outros MMORPGs, concluímos que não gostamos mais de fazer missões lineares de "interagir aqui e ali", muitas vezes obrigatórias para subir de nível. Por isso, em Drakantos, as missões terão um propósito real e as recompensas não serão apenas ouro e experiência. Elas incluirão desbloqueio de sistemas, lojas, artefatos, ferramentas de exploração (como um gancho de escalada para acessar novos locais) e assim por diante.</p>
                     <p>Também teremos muitas missões secundárias e histórias específicas para certos personagens. Por exemplo, uma certa missão pode exigir conhecimento de Magia, então apenas personagens da categoria mago poderão completá-la.</p>
                     <p>É importante notar que essas missões oferecem progressão horizontal, ou seja, completar uma missão com um personagem contará para toda a sua conta.</p>
