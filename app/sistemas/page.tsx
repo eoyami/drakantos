@@ -4,7 +4,6 @@ import mundoAberto from '../../public/mundo-aberto.png'
 import mundoDrakantos from '../../public/mundo-drakantos.png'
 import matchmaking from '../../public/matchmaking.png'
 import Link from 'next/link'
-import Foooter from '../components/Footer';
 
 const page = () => {
   return (
