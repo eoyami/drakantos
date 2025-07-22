@@ -74,7 +74,7 @@ const Navbar = () => {
             <div className='flex justify-center items-center w-full'>
             <Image className='flex' src="/drakantos_logo2.png" width={250} height={50} alt=""></Image>
             </div> 
-                <div ref={menuRef} className={`fixed top-12 z-20 w-full bg-[#171717] transform transition-all duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}>
+                <div ref={menuRef} className={`fixed top-12 z-20 w-full bg-[#171717] transform transition-all duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-4 opacity-0 pointer-events-none'}`}>
                     <ul className='flex flex-col text-white'>
                         <Link className='py-2 px-4 border-b border-white w-full' href="/" onClick={closeMenu}>Início</Link>
                         <Link className='py-2 px-4 border-b border-white w-full' href="/historia" onClick={closeMenu}>História</Link>
