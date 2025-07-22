@@ -59,7 +59,7 @@ const Navbar = () => {
                 <Link className='hover:text-[#F4CF8B]' href="/historia" onClick={handleMenu}>História</Link>
             </div>
             <div id='logo' className='relative w-[300px]'>
-                <Image className='absolute top-0 z-20' src="/drakantos_logo.png" width={300} height={100} alt=""></Image>
+                <Image className='absolute top-0 z-20' src="/drakantos_logo.png" draggable={false} width={300} height={100} alt=""></Image>
             </div>
             <div className='hidden md:flex p-4 space-x-4'>
                 <Link className='hover:text-[#F4CF8B]' href="/galeria" onClick={handleMenu}>Galeria</Link>
