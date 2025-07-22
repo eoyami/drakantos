@@ -14,7 +14,7 @@ const page = () => {
                 <h1 id="frase" className="text-center text-white text-3xl text-shadow-md lg:mt-[10rem] mt-[2rem]">Sistemas</h1>
               </div>
               <div className="flex mt-4 text-white w-full gap-2">
-              <div className='flex flex-col px-2 bg-black/65 w-full md:w-[80%] py-3'>
+              <div className='flex flex-col p-5 md:px-10 bg-black/65 w-full md:w-[80%] py-3'>
                 <div className='paragrafo'>
                   <div id='sobre'>
                     <div className='title'>
