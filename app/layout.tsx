@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import { Analytics } from "@vercel/analytics/react"
+import Footer from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,14 +28,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth`}
       >
-      <Navbar/>
-      {children}
-      <Analytics/>
-      <footer className="text-white text-center p-4">
-        Drakantos Non-Official Site | 2025
-      </footer>
+      <div id="container">
+        <Navbar/>
+        {children}
+        <Analytics/>
+      </div>
+      <Footer/>
       </body>
     </html>
   );
