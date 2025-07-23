@@ -20,7 +20,7 @@ type CharacterProps = {
     alt: string,
     type: "support" | "tank" | "dps" | "none",
     description: string,
-    skills: Skills[],
+    skills: Record<number, Skills[]>,
   }
   
   export const characters: CharacterProps[] = [
@@ -32,45 +32,58 @@ type CharacterProps = {
       alt: "Ozul",
       type: "dps",
       description: "Ozul é um assassino sombrio, mestre em ataques furtivos e letais. Sua presença nas sombras é sinônimo de perigo iminente.",
-      skills: [
-        {
-          id: 1,
-          name: "Lamina do Mameydinouvo",
-          orbes: [
-                {
-                  id: 1,
-                  name: "Orbe do Syleumamou",
-                  img: orbe.src
-                }
+      skills: {
+        1: [
+          {
+            id: 1,
+            name: "Lamina do Mameydinouvo",
+            orbes: [
+              {
+                id: 1,
+                name: "Orbe do Syleumamou",
+                img: orbe.src
+              }
+            ],
+          },
+        ],
+          2 : [
+            {
+            id: 2,
+            name: "Carnificina da Mamância",
+            orbes: []
+          },
           ],
-        },
-        {
-          id: 2,
-          name: "Carnificina da Mamância",
-          orbes: []
-        },
-        {
-          id: 3,
-          name: "Carnificina da Mamância",
-          orbes: []
-        },
-        {
-          id: 4,
-          name: "Carnificina da Mamância",
-          orbes: []
-        },
-        {
-          id: 5,
-          name: "Carnificina da Mamância",
-          orbes: []
-        },
-        {
-          id: 6,
-          name: "Carnificina da Mamância",
-          orbes: []
-        },
-      ],
-    },
+          3: [
+            {
+            id: 3,
+            name: "Carnificina da Mamância",
+            orbes: []
+          },
+          ],
+          4: [
+            {
+            id: 4,
+            name: "Carnificina da Mamância",
+            orbes: []
+          },
+          ],
+          5: [
+            {
+            id: 5,
+            name: "Carnificina da Mamância",
+            orbes: []
+          },
+          ],
+          6: [
+            {
+            id: 6,
+            name: "Carnificina da Mamância",
+            orbes: []
+          }
+          ]
+        }
+      }
+    ,
     // {
     //   id: 2,
     //   name: "Arryn",

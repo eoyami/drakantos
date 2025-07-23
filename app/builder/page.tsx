@@ -4,22 +4,27 @@ import { characters } from '../characters'
 import { useState } from 'react';
 import artefato from '@/public/artefato.png'
 import trofeu from '@/public/trofeu.png'
+import type { Orbes } from '../characters';
 
 const page = () => {
+
     type TrophysAndArtefact = {
         id: number,
         name: string,
         img: string,
         type: string
     }
-    const [character, setCharacter] = useState(characters[0]); // Default to the first character
+
+    const [character, setCharacter] = useState(characters[0]);
     const [activeTab, setActiveTab] = useState(1)
     const [skillActive, setSkillActive] = useState(1)
-
     const [artefatos, setArtefatos] = useState<TrophysAndArtefact[]>([])
     const [trofeus, setTrofeus] = useState<TrophysAndArtefact[]>([])
+
+    const [orbeAtiva, setOrbeAtiva] = useState<Orbes[]>([])
     const [selectArtefatoId, setSelectArtefatoId] = useState<TrophysAndArtefact[]>([])
     const [selectTrofeuId, setSelectTrofeuId] = useState<TrophysAndArtefact[]>([])
+    const [orbeSelected, setOrbeSelected] = useState<Orbes[]>([])
 
     const tabs = [
         {   id: 1,
@@ -148,6 +153,37 @@ const page = () => {
         const list = type === "artefato" ? artefatos : trofeus;
         return list.some(item => item.id === id);
     }
+
+    const handleAddOrbe = (orbe: Orbes) => {
+        const isOrbeSelected = orbeSelected.some(item => item.id === orbe.id)
+
+        if(isOrbeSelected){
+            setOrbeSelected(prev => prev.filter(item => item.id !== orbe.id))
+            setOrbeAtiva(prev => prev.filter(item => item.id !== orbe.id))
+            return     
+        }
+        const newOrbe = {
+            id: orbe.id,
+            name: orbe.name,
+            img: orbe.img
+        }
+
+        setOrbeSelected(prev => [
+            ...prev,
+            newOrbe
+        ])
+
+        setOrbeAtiva(prev => [
+            ...prev,
+            newOrbe
+        ]
+        )
+    }
+
+    const orbeIsSelected = (orbe: Orbes) => { 
+        return  orbeSelected.some(item => item.id === orbe.id)
+    }
+
   return (
           <div className="flex flex-col justify-center items-center w-full min-h-screen" >
             <div className=" w-full min-h-screen bg-[url('/background_coliseu.png')] bg-cover bg-no-repeat sm:bg-fixed">
@@ -216,20 +252,39 @@ const page = () => {
                             <h2 className='text-2xl'>Skills</h2>
                         </div>
                         <div className='flex justify-between w-full tabs text-center'>
-                            {character.skills.map(skill => (
-                            <div key={skill.id} onClick={() => {setSkillActive(skill.id)}} className={`p-5 w-full hover:cursor-pointer ${skillActive  === skill.id ? `bg-gray-500/30` : `hover:bg-gray-500/30`}`}>
-                                <h2 className='tab text-2xl'>{skill.id}</h2>
-                            </div>
-                        ))}
+                            {Object.entries(character.skills).map(([skillId, skills]) => (
+                                    <div key={skillId} onClick={() => {setSkillActive(Number(skillId))}} className={`'tab p-5 w-full' ${skillActive === Number(skillId) ? `bg-gray-500/30` : ``}`}>
+                                        <h2 className='text-2xl'>{skillId}</h2>
+                                        {/* {skills.map((skill, idx) => (
+                                            <div key={idx}>
+                                            {skill.orbes.map((orbe) => (
+                                                <div key={orbe.id}>
+                                                    <p>{orbe.name}</p>
+                                                    <img src={orbe.img} alt={orbe.name} />
+                                                </div>
+                                            ))}
+                                            </div>
+                                        ))} */}
+                                    </div>
+                                    ))}
                     </div>
                     <div>
-                        {character.skills.filter(skill => skill.id === skillActive).map(skill => (
+                        {character.skills[skillActive].filter(skill => skill.id === skillActive).map(skill => (
                             <div key={skill.id}>
                                 {skill.name}
+
+                                <div>
+                                    <h2 className='text-center text-2xl'>Orbe ativa:</h2>
+                                    {orbeAtiva.map(orbe => (
+                                        <div className='flex justify-center items-center' key={orbe?.id}>
+                                            <img src={orbe?.img} alt={orbe?.name} />
+                                        </div>
+                                    ))}
+                                </div>
                                 <div>
                                     <h2 className='text-center text-2xl'>Orbes disponíveis:</h2>
                                     {skill.orbes.map(orbe => (
-                                            <div key={orbe.id} className='w-max p-3 hover:bg-gray-500/30'>
+                                            <div key={orbe.id} onClick={() => {handleAddOrbe(orbe)}} className={`w-max p-3 hover:bg-gray-500/30 hover:cursor-pointer ${orbeIsSelected(orbe) ? `border-1 border-red-500` : ``}`}>
                                                 <img src={orbe.img} alt=""/>
                                             </div>
                                     ))}
