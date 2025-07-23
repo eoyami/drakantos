@@ -117,8 +117,7 @@ const page = () => {
     }
 
     const handleAddTrofeu = (trofeu: TrophysAndArtefact) => {
-
-        const isSelected = trofeus.some(select => select.id === trofeu.id)
+        const isSelected = selectTrofeuId.some(select => select.id === trofeu.id)
         
         if(isSelected){
             setTrofeus(prev => prev.filter(item => item.id !== trofeu.id))
@@ -252,12 +251,17 @@ const page = () => {
                         {
                             tabs.filter(tab => tab.id === activeTab)
                                 .map(tab =>
-                                    <div key={tab.id} className='flex'>
-                                        {tab.content.map((item, idx) => (
+                                    <div key={tab.id} className='flex flex-col w-full p-3'>
+                                        <div className='flex w-full border-1 border-gray-500'>
+                                            <input type="text" className='w-full p-3 outline-none text-xl' placeholder={`Pesquise aqui seus ${activeTab === tab.id ? tab.name : ''}`} />
+                                        </div>
+                                        <div className='flex'>
+                                            {tab.content.map((item, idx) => (
                                             <div key={idx} className={`flex flex-col items-center p-2 hover:bg-gray-500/30 hover:cursor-pointer ${isItemSelected(item.type, item.id) ? `border-1 border-red-500` : ''}`} onClick={() => { item.type === "trofeu" ? handleAddTrofeu(item) : handleAddArtefato(item); }}>
                                                 <img src={item.img} alt={item.name} className="w-24 h-24 mb-2" />
                                             </div>
                                         ))}
+                                        </div>
                                     </div>
                                 )
                         }
