@@ -75,7 +75,7 @@ const page = () => {
                     </div>
                     <div className='flex justify-between w-full tabs text-center'>
                             {character.skills.map(skill => (
-                            <div key={skill.id} onClick={() => {setSkillActive(skill.id)}} className={`p-5 w-full hover:cursor-pointer hover:bg-gray-500/30`}>
+                            <div key={skill.id} onClick={() => {setSkillActive(skill.id)}} className={`p-5 w-full hover:cursor-pointer ${skillActive  === skill.id ? `bg-gray-500/30` : `hover:bg-gray-500/30`}`}>
                                 <h2 className='tab text-2xl'>{skill.id}</h2>
                             </div>
                         ))}
