@@ -36,7 +36,7 @@ const page = () => {
             name: "Orbes",
             content: [
                 {
-                    name: "Orbe maneiro",
+                    name: "Orbe do Syleumamou",
                     img: orbe.src
                 }
             ]
