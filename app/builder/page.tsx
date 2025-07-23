@@ -9,7 +9,7 @@ import orbe from '@/public/orbe.png'
 const page = () => {
     const [character, setCharacter] = useState(characters[0]); // Default to the first character
     const [activeTab, setActiveTab] = useState(1)
-
+    const [skillActive, setSkillActive] = useState(1)
 
     const tabs = [
         {   id: 1,
@@ -56,7 +56,8 @@ const page = () => {
                 <h1 id="frase" className="text-center text-white text-3xl text-shadow-md lg:mt-[5rem] mt-[2rem]">WIP - Builder</h1>
               </div>
               <div className="flex flex-col sm:flex-row mt-4 text-white w-full gap-2 bg-black/65 min-h-screen justify-start sm:justify-center">
-                <div className='flex justify-between p-5 md:px-10 md:w-full py-3 justify-center items-start gap-2'>
+                <div className='flex flex-col justify-between p-5 md:px-10 md:w-full py-3 justify-start items-start gap-2'>
+                    <div className='flex justify-center w-full'>
                         <div id='character' className='flex flex-col justify-center items-center gap-2'>
                         <div>
                         <label htmlFor="character">Escolha seu personagem:</label>
@@ -70,6 +71,21 @@ const page = () => {
                         <div className='flex flex-col items-center h-full md:w-96 w-full'>
                             <img src={character.bigImg} alt={character.name} className=" rounded-full" />
                         </div>
+                    </div>
+                    </div>
+                    <div className='flex justify-between w-full tabs text-center'>
+                            {character.skills.map(skill => (
+                            <div key={skill.id} onClick={() => {setSkillActive(skill.id)}} className={`p-5 w-full hover:cursor-pointer hover:bg-gray-500/30`}>
+                                <h2 className='tab text-2xl'>{skill.id}</h2>
+                            </div>
+                        ))}
+                    </div>
+                    <div>
+                        {character.skills.filter(skill => skill.id === skillActive).map(skill => (
+                            <div key={skill.id}>
+                                {skill.name}
+                            </div>
+                        ))}
                     </div>
                 </div>
               <div id='miscellaneous' className='flex flex-col gap-2 w-full bg-gray-500/30'>

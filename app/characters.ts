@@ -1,3 +1,8 @@
+type Skills = {
+  id: number,
+  name: String
+}
+
 type CharacterProps = {
     id: number,
     name: string,
@@ -6,6 +11,7 @@ type CharacterProps = {
     alt: string,
     type: "support" | "tank" | "dps" | "none",
     description: string,
+    skills: Skills[]
   }
   
   export const characters: CharacterProps[] = [
@@ -17,6 +23,16 @@ type CharacterProps = {
       alt: "Ozul",
       type: "dps",
       description: "Ozul é um assassino sombrio, mestre em ataques furtivos e letais. Sua presença nas sombras é sinônimo de perigo iminente.",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        },
+        {
+          id: 2,
+          name: "Carnificina da Mamância"
+        }
+      ]
     },
     {
       id: 2,
@@ -26,6 +42,12 @@ type CharacterProps = {
       alt: "Arryn",
       type: "dps",
       description: "Arryn é um ágil guerreiro, conhecido por sua velocidade e precisão em combate. Sua lâmina é tão rápida quanto mortal.",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 3,
@@ -35,6 +57,12 @@ type CharacterProps = {
       alt: "Byron",
       type: "support",
       description: "Byron é um elementalista que manipula os elementos para proteger aliados e desferir ataques devastadores contra inimigos.",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 4,
@@ -44,6 +72,12 @@ type CharacterProps = {
       alt: "Iris",
       type: "tank",
       description: "Iris é uma ilusionista que utiliza magia para confundir inimigos e proteger seus aliados com escudos mágicos.",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 5,
@@ -53,6 +87,12 @@ type CharacterProps = {
       alt: "Kavras",
       type: "support",
       description: "Kavras é um necromante poderoso, capaz de invocar os mortos e manipular a energia vital para auxiliar seus aliados.",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 6,
@@ -62,6 +102,12 @@ type CharacterProps = {
       alt: "Korz",
       type: "tank",
       description: "Korz é um guerreiro imponente, cuja força bruta e resistência o tornam uma muralha intransponível no campo de batalha.",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 7,
@@ -71,6 +117,12 @@ type CharacterProps = {
       alt: "Ojore",
       type: "tank",
       description: "Ojore é um defensor incansável, sempre na linha de frente para proteger seus companheiros com coragem e determinação.",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 8,
@@ -80,6 +132,12 @@ type CharacterProps = {
       alt: "Ophis",
       type: "dps",
       description: "Ophis é uma feiticeira misteriosa que canaliza o poder do caos para desferir ataques mágicos de grande intensidade.",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 9,
@@ -89,6 +147,12 @@ type CharacterProps = {
       alt: "Orbryn",
       type: "dps",
       description: "Orbryn é um arqueiro preciso, cuja habilidade com o arco é incomparável, atingindo alvos com letalidade à distância.",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 10,
@@ -98,6 +162,12 @@ type CharacterProps = {
       alt: "Reya",
       type: "dps",
       description: "Reya é uma guerreira elétrica, que combina velocidade e ataques de raio para eliminar seus inimigos rapidamente.",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 11,
@@ -107,6 +177,12 @@ type CharacterProps = {
       alt: "Thomas",
       type: "support",
       description: "Thomas é um bardo felino que utiliza melodias encantadoras para fortalecer aliados e enfraquecer adversários.",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 12,
@@ -116,6 +192,12 @@ type CharacterProps = {
       alt: "Urijor",
       type: "tank",
       description: "Urijor, conhecido como o 'Druida Louco', manipula a natureza de forma imprevisível para proteger e atacar com ferocidade.",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 13,
@@ -125,6 +207,12 @@ type CharacterProps = {
       alt: "faendar",
       type: "support",
       description: "PLACEHOLDER",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 14,
@@ -134,6 +222,12 @@ type CharacterProps = {
       alt: "irhaal",
       type: "dps",
       description: "PLACEHOLDER",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 15,
@@ -143,6 +237,12 @@ type CharacterProps = {
       alt: "liam",
       type: "tank",
       description: "PLACEHOLDER",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 16,
@@ -152,6 +252,12 @@ type CharacterProps = {
       alt: "marly",
       type: "support",
       description: "PLACEHOLDER",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 17,
@@ -161,6 +267,12 @@ type CharacterProps = {
       alt: "mohazus",
       type: "tank",
       description: "PLACEHOLDER",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 18,
@@ -170,6 +282,12 @@ type CharacterProps = {
       alt: "yuki",
       type: "tank",
       description: "PLACEHOLDER",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 19,
@@ -179,6 +297,12 @@ type CharacterProps = {
       alt: "yura",
       type: "dps",
       description: "PLACEHOLDER",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
     {
       id: 20,
@@ -188,6 +312,12 @@ type CharacterProps = {
       alt: "zeugladius",
       type: "support",
       description: "PLACEHOLDER",
+      skills: [
+        {
+          id: 1,
+          name: "Lamina do Mameydinouvo"
+        }
+      ]
     },
   ];
   
