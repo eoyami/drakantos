@@ -2,10 +2,46 @@
 import React from 'react'
 import { characters } from '../characters'
 import { useState } from 'react';
+import artefato from '@/public/artefato.png'
+import trofeu from '@/public/trofeu.png'
+import orbe from '@/public/orbe.png'
 
 const page = () => {
     const [character, setCharacter] = useState(characters[0]); // Default to the first character
+    const [activeTab, setActiveTab] = useState(1)
 
+
+    const tabs = [
+        {   id: 1,
+            name: "Troféus",
+            content: [
+                {
+                    name: "Troféu maneiro",
+                    img: trofeu.src
+                }
+            ]
+        },
+        {   
+            id: 2,
+            name: "Artefatos",
+            content: [
+                {
+                    name: "Artefato maneiro",
+                    img: artefato.src
+                }
+            ]
+        },
+        {
+            id: 3,
+            name: "Orbes",
+            content: [
+                {
+                    name: "Orbe maneiro",
+                    img: orbe.src
+                }
+            ]
+        },
+    ]
     const handleCharacterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedCharacter = characters.find(char => char.name === event.target.value);
         if (selectedCharacter) {
@@ -19,7 +55,7 @@ const page = () => {
               <div>
                 <h1 id="frase" className="text-center text-white text-3xl text-shadow-md lg:mt-[5rem] mt-[2rem]">WIP - Builder</h1>
               </div>
-              <div className="flex mt-4 text-white w-full gap-2 bg-black/65 min-h-screen justify-center">
+              <div className="flex flex-col sm:flex-row mt-4 text-white w-full gap-2 bg-black/65 min-h-screen justify-start sm:justify-center">
                 <div className='flex justify-between p-5 md:px-10 md:w-full py-3 justify-center items-start gap-2'>
                         <div id='character' className='flex flex-col justify-center items-center gap-2'>
                         <div>
@@ -38,15 +74,35 @@ const page = () => {
                 </div>
               <div id='miscellaneous' className='flex flex-col gap-2 w-full bg-gray-500/30'>
                     <div className='flex justify-between items-center tabs text-center'>
-                        <div className='p-5 hover:bg-gray-500/30 w-full hover:cursor-pointer'>
+                        {/* <div id='trofeu' className={`p-5 w-full hover:cursor-pointer ${activeTab ? 'bg-gray-500/30' : ''}`} onClick={() => {setActiveTab(!activeTab)}}>
                             <h2 className='tab text-2xl'>Troféus</h2>
                         </div>
-                        <div className='p-5 hover:bg-gray-500/30 w-full hover:cursor-pointer'>
+                        <div id='artefato' className={`p-5 w-full hover:cursor-pointer ${activeTab ? 'bg-gray-500/30' : ''}`} onClick={() => {setActiveTab(!activeTab)}}>
                             <h2 className='tab text-2xl'>Artefatos</h2>
                         </div>
-                        <div className='p-5 hover:bg-gray-500/30 w-full hover:cursor-pointer'>
+                        <div id='orbe' className='p-5 hover:bg-gray-500/30 w-full hover:cursor-pointer'>
                             <h2 className='tab text-2xl'>Orbes</h2>
-                        </div>
+                        </div> */}
+                        {tabs.map((tab) => (
+                            <div key={tab.id} className={`p-5 w-full hover:cursor-pointer ${activeTab === tab.id ? 'bg-gray-500/30' : ''}`} onClick={() => {setActiveTab(tab.id)}}>
+                                <h2 className='tab text-2xl'>{tab.name}</h2>
+                            </div>
+                        ))}
+                    </div>
+                    <div className='flex justify-start'>
+                        {
+                            tabs.filter(tab => tab.id === activeTab)
+                                .map(tab =>
+                                    <div key={tab.id}>
+                                        {tab.content.map((item, idx) => (
+                                            <div key={idx} className="flex flex-col items-center p-2 hover:bg-gray-500/30">
+                                                <img src={item.img} alt={item.name} className="w-24 h-24 mb-2" />
+                                                <span className="text-lg">{item.name}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )
+                        }
                     </div>
                 </div>
               </div>
