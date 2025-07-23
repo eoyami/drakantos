@@ -81,7 +81,7 @@ const Navbar = () => {
                         <Link className='py-2 px-4 border-b border-white w-full' href="/historia" onClick={closeMenu}>História</Link>
                         <Link className='py-2 px-4 border-b border-white w-full' href="/galeria" onClick={closeMenu}>Galeria</Link>
                         <Link className='py-2 px-4 border-b border-white w-full' href="/sistemas" onClick={closeMenu}>Sistemas</Link>
-                        <Link className='py-2 px-4 border-b border-white w-full' href="/builder" onClick={closeMenu}>Sistemas</Link>
+                        <Link className='py-2 px-4 border-b border-white w-full' href="/builder" onClick={closeMenu}>Builder</Link>
                     </ul>
                 </div>
     </div>
