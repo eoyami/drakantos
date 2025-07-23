@@ -1,4 +1,8 @@
 import orbe from '@/public/orbe.png'
+import orbe_2 from '@/public/orbe_2.png'
+import orbe_3 from '@/public/orbe_3.png'
+import orbe_4 from '@/public/orbe_4.png'
+import orbe_5 from '@/public/orbe_5.png'
 
 type Skills = {
   id: number,
@@ -42,6 +46,16 @@ type CharacterProps = {
                 id: 1,
                 name: "Orbe do Syleumamou",
                 img: orbe.src
+              },
+              {
+                id: 2,
+                name: "Orbe do Syleumamou",
+                img: orbe_4.src
+              },
+              {
+                id: 3,
+                name: "Orbe do Syleumamou",
+                img: orbe_5.src
               }
             ],
           },
@@ -50,14 +64,31 @@ type CharacterProps = {
             {
             id: 2,
             name: "Carnificina da Mamância",
-            orbes: []
+            orbes: [
+              {
+                id: 4,
+                name: "Orbe do Beta",
+                img: orbe_2.src
+              },
+              {
+                id: 5,
+                name: "Orbe do Beta",
+                img: orbe_5.src
+              },
+            ]
           },
           ],
           3: [
             {
             id: 3,
             name: "Carnificina da Mamância",
-            orbes: []
+            orbes: [
+              {
+                id: 6,
+                name: "Orbe do Beta",
+                img: orbe_3.src
+              },
+            ]
           },
           ],
           4: [
