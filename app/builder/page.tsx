@@ -30,8 +30,8 @@ const page = () => {
     const [artefatos, setArtefatos] = useState<TrophysAndArtefact[]>([])
     const [trofeus, setTrofeus] = useState<TrophysAndArtefact[]>([])
     const [orbeAtiva, setOrbeAtiva] = useState<Record<number, Orbes[]>>({})
-    const [selectArtefatoId, setSelectArtefatoId] = useState<TrophysAndArtefact[]>([])
-    const [selectTrofeuId, setSelectTrofeuId] = useState<TrophysAndArtefact[]>([])
+    // const [selectArtefatoId, setSelectArtefatoId] = useState<TrophysAndArtefact[]>([])
+    // const [selectTrofeuId, setSelectTrofeuId] = useState<TrophysAndArtefact[]>([])
     // const [orbeSelected, setOrbeSelected] = useState<Record<number, Orbes[]>>({})
     const [character, setCharacter] = useState(characters[0]);
         useEffect(() => {
@@ -164,7 +164,7 @@ const page = () => {
                 }
             }
             router.replace(`?${currentParams.toString()}`, { scroll: false })
-            setSelectArtefatoId(prev => prev.filter(item => item.id !== artefato.id))
+            // setSelectArtefatoId(prev => prev.filter(item => item.id !== artefato.id))
             setArtefatos(prev => prev.filter(item => item.id !== artefato.id))
             return
         }
@@ -182,9 +182,9 @@ const page = () => {
         currentParams.set(`artefato${artefatos.length}`, String(artefato.id))
         router.replace(`?${currentParams.toString()}`, {scroll: false})
         
-        setSelectArtefatoId(prev => [
-            ...prev, newArtifact
-        ])
+        // setSelectArtefatoId(prev => [
+        //     ...prev, newArtifact
+        // ])
 
         setArtefatos(prev => [
             ...prev, newArtifact
@@ -205,7 +205,7 @@ const page = () => {
         
         if(isSelected){
             setTrofeus(prev => prev.filter(item => item.id !== trofeu.id))
-            setSelectTrofeuId(prev => prev.filter(item => item.id !== trofeu.id))
+            // setSelectTrofeuId(prev => prev.filter(item => item.id !== trofeu.id))
             const currentParams = new URLSearchParams(window.location.search)
             if(currentParams.has(`trofeu${trofeus.length - 1}`)){
                 currentParams.delete(`trofeu${trofeus.length - 1}`)
@@ -224,9 +224,9 @@ const page = () => {
                 type: trofeu.type
             }
 
-        setSelectTrofeuId(prev => [
-            ...prev, newTrofeu
-        ])
+        // setSelectTrofeuId(prev => [
+        //     ...prev, newTrofeu
+        // ])
 
         setTrofeus(prev => [
             ...prev, newTrofeu
