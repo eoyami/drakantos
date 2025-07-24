@@ -17,12 +17,12 @@ const page = () => {
         type: string
     }
 
-    type Build = {
-        personagem: CharacterProps,
-        orbesAtivos: Record<number, Orbes[]>,
-        trofeusAtivos: Record<number, TrophysAndArtefact[]>,
-        artefatosAtivos: Record<number, TrophysAndArtefact[]> 
-    }
+    // type Build = {
+    //     personagem: CharacterProps,
+    //     orbesAtivos: Record<number, Orbes[]>,
+    //     trofeusAtivos: Record<number, TrophysAndArtefact[]>,
+    //     artefatosAtivos: Record<number, TrophysAndArtefact[]> 
+    // }
 
     const [params, setParams] = useState<URLSearchParams | null>(null)
     const [activeTab, setActiveTab] = useState(1)
@@ -34,13 +34,15 @@ const page = () => {
     // const [selectTrofeuId, setSelectTrofeuId] = useState<TrophysAndArtefact[]>([])
     // const [orbeSelected, setOrbeSelected] = useState<Record<number, Orbes[]>>({})
     const [character, setCharacter] = useState(characters[0]);
+
         useEffect(() => {
             //PERSONAGEM
         if(typeof window !== undefined){
             const searchParams = new URLSearchParams(window.location.search)
             setParams(searchParams)
-
             let personagemId = characters[0].id
+
+            router.replace(`?character=${personagemId}`,{ scroll: false})
             if(searchParams && searchParams.has('character')){
                 personagemId = Number(searchParams.get('character'))
                 setCharacter(characters[personagemId - 1])
@@ -78,9 +80,6 @@ const page = () => {
                     }
                 }
             }
-
-            //TROFEUS
-            
         }
     }, [])
 
