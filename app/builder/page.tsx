@@ -24,7 +24,7 @@ const page = () => {
         artefatosAtivos: Record<number, TrophysAndArtefact[]> 
     }
 
-    const [character, setCharacter] = useState(characters[0]);
+    const [params, setParams] = useState<URLSearchParams | null>(null)
     const [activeTab, setActiveTab] = useState(1)
     const [skillActive, setSkillActive] = useState(1)
     const [artefatos, setArtefatos] = useState<TrophysAndArtefact[]>([])
@@ -32,8 +32,57 @@ const page = () => {
     const [orbeAtiva, setOrbeAtiva] = useState<Record<number, Orbes[]>>({})
     const [selectArtefatoId, setSelectArtefatoId] = useState<TrophysAndArtefact[]>([])
     const [selectTrofeuId, setSelectTrofeuId] = useState<TrophysAndArtefact[]>([])
-    const [orbeSelected, setOrbeSelected] = useState<Record<number, Orbes[]>>({})
+    // const [orbeSelected, setOrbeSelected] = useState<Record<number, Orbes[]>>({})
+    const [character, setCharacter] = useState(characters[0]);
+        useEffect(() => {
+            //PERSONAGEM
+        if(typeof window !== undefined){
+            const searchParams = new URLSearchParams(window.location.search)
+            setParams(searchParams)
 
+            let personagemId = characters[0].id
+            if(searchParams && searchParams.has('character')){
+                personagemId = Number(searchParams.get('character'))
+                setCharacter(characters[personagemId - 1])
+                return
+            }
+            setCharacter(characters[personagemId - 1])
+
+
+            //ORBES
+            for(const [key, value] of searchParams.entries()){
+                const num = Number(value)
+                if(key.startsWith('orbe')){
+                    const skillId = Number(key.replace("orbe", ""))
+                    const orbeId = Number(value)
+                    const orbesDaSkill = character.skills[skillId]?.[0]?.orbes
+                    const orbeEncontrada = orbesDaSkill?.find((o) => o.id === orbeId)
+                    if (orbeEncontrada) {
+                        orbeAtiva[skillId] = [orbeEncontrada]
+                    }
+                }
+                if (key.startsWith("trofeu")) {
+                    const trofeu = tabs.find(t => t.name === "Troféus")?.content.find(t => t.id === num)
+                    if (trofeu) {
+                        setTrofeus(prev => {
+                            if(prev.some(t => t.id === trofeu.id)) return prev;
+                            return [...prev, trofeu]
+                        })
+                    }
+                    }
+
+                    if (key.startsWith("artefato")) {
+                    const artefato = tabs.find(t => t.name === "Artefatos")?.content.find(t => t.id === num)
+                    if (artefato) {
+                        setArtefatos(prev => [...prev, artefato])
+                    }
+                }
+            }
+
+            //TROFEUS
+            
+        }
+    }, [])
 
     
 
@@ -99,14 +148,22 @@ const page = () => {
             const selecionado = currentParams.has("character")
             if(selecionado){
                 currentParams.set("character", String(character.id))
-                router.replace(`?${currentParams.toString()}`, undefined)
+                router.replace(`?${currentParams.toString()}`, {scroll: false})
             }
     }
 
     const handleAddArtefato = (artefato: TrophysAndArtefact) => {
-        const isSelected = selectArtefatoId.some(item => item.id === artefato.id)
-
+        const isSelected = artefatos.some(item => item.id === artefato.id)
+        const currentParams = new URLSearchParams(window.location.search)
         if(isSelected){
+            
+
+            for (const [key, value] of currentParams.entries()) {
+                if (key.startsWith("artefato") && value === String(artefato.id)) {
+                    currentParams.delete(key)
+                }
+            }
+            router.replace(`?${currentParams.toString()}`, { scroll: false })
             setSelectArtefatoId(prev => prev.filter(item => item.id !== artefato.id))
             setArtefatos(prev => prev.filter(item => item.id !== artefato.id))
             return
@@ -122,7 +179,9 @@ const page = () => {
                 img: artefato.img,
                 type: artefato.type
             }
-
+        currentParams.set(`artefato${artefatos.length}`, String(artefato.id))
+        router.replace(`?${currentParams.toString()}`, {scroll: false})
+        
         setSelectArtefatoId(prev => [
             ...prev, newArtifact
         ])
@@ -133,20 +192,25 @@ const page = () => {
     }
 
 
-    const handleRemoveArtefato = (idToRemove: number) => {
-        setArtefatos(prev => prev.filter(artefato => artefato.id !== idToRemove));
-    }
+    // const handleRemoveArtefato = (idToRemove: number) => {
+    //     setArtefatos(prev => prev.filter(artefato => artefato.id !== idToRemove));
+    // }
 
-    const handleRemoveTrofeu = (idToRemove: number) => {
-        setTrofeus(prev => prev.filter(artefato => artefato.id !== idToRemove));
-    }
+    // const handleRemoveTrofeu = (idToRemove: number) => {
+    //     setTrofeus(prev => prev.filter(artefato => artefato.id !== idToRemove));
+    // }
 
     const handleAddTrofeu = (trofeu: TrophysAndArtefact) => {
-        const isSelected = selectTrofeuId.some(select => select.id === trofeu.id)
+        const isSelected = trofeus.some(select => select.id === trofeu.id)
         
         if(isSelected){
             setTrofeus(prev => prev.filter(item => item.id !== trofeu.id))
             setSelectTrofeuId(prev => prev.filter(item => item.id !== trofeu.id))
+            const currentParams = new URLSearchParams(window.location.search)
+            if(currentParams.has(`trofeu${trofeus.length - 1}`)){
+                currentParams.delete(`trofeu${trofeus.length - 1}`)
+                router.replace(`?${currentParams.toString()}`, {scroll: false})
+            }
             return
         }
         if(trofeus.length >= 2){
@@ -167,6 +231,10 @@ const page = () => {
         setTrofeus(prev => [
             ...prev, newTrofeu
         ])
+        const currentParams = new URLSearchParams(window.location.search)
+        currentParams.set(`trofeu${trofeus.length}`, String(trofeu.id))
+        router.replace(`?${currentParams.toString()}`, {scroll: false})
+        
     }
 
     const isItemSelected = (type: string, id: number) => {
@@ -175,53 +243,58 @@ const page = () => {
     }
 
     const handleAddOrbe = (skillId: number, orbe: Orbes) => {
-
         const totalOrbes = Object.values(orbeAtiva).reduce((acc, orbes) => {
             return acc + orbes.length
         }, 0)
         
         if(totalOrbes >= 6){
-            return (console.log('maior ou igual a 2', totalOrbes))
+            return
         }
         const isOrbeSelected = Object.values(orbeAtiva).some((orbesArray)=> orbesArray.some(o => o.id === orbe.id))
+        const currentParams = new URLSearchParams(window.location.search)
 
         if(isOrbeSelected){
-            setOrbeSelected(prev => {
-                const novoRecord: Record<string, Orbes[]> = {}
-                for(const [skillId, orbes] of Object.entries(prev)){
-                    novoRecord[skillId] = orbes.filter(o => o.id !== orbe.id)
-                }
-                return novoRecord
-            })
+            // setOrbeSelected(prev => {
+            //     const novoRecord: Record<string, Orbes[]> = {}
+            //     for(const [skillId, orbes] of Object.entries(prev)){
+            //         novoRecord[skillId] = orbes.filter(o => o.id !== orbe.id)
+            //     }
+            //     return novoRecord
+            // })
             
             setOrbeAtiva(prev => ({
                 ...prev,
                 [skillId]: [orbe]
             }))
-
+            currentParams.delete(`orbe${skillId}`)
+            router.replace(`?${currentParams.toString()}`, {scroll: false})
             handleRemoveOrbe(orbe)
-            return  
+            return
         }
 
-        setOrbeSelected(prev => {
-            const currentOrbes = prev[skillId] || []
+        // setOrbeSelected(prev => {
+        //     const currentOrbes = prev[skillId] || []
+        //     const AlreadyExists = currentOrbes.some(o => o.id === orbe.id)
+        //     if(AlreadyExists){
+        //         return prev
+        //     }
 
-            const AlreadyExists = currentOrbes.some(o => o.id === orbe.id)
-            if(AlreadyExists){
-                return prev
-            }
-
-            return {
-                ...prev, 
-                [skillId]: [...currentOrbes, orbe]
-            }
-        })
+        //     return {
+        //         ...prev, 
+        //         [skillId]: [...currentOrbes, orbe]
+        //     }
+        // })
 
         setOrbeAtiva(prev => ({
             ...prev,
             [skillId]: [orbe]
-        })
-        )
+        }))
+        const orbeId = orbe.id
+        if(orbeId){
+            currentParams.set(`orbe${skillId}`, String(orbeId))
+        }
+
+        router.replace(`?${currentParams.toString()}`, {scroll: false})
     }
 
     const orbeIsSelected = (orbe: Orbes) => { 
@@ -242,32 +315,12 @@ const page = () => {
         })
     }
 
-    const gerarLink = (build: Build) => {
-        const string = JSON.stringify(build)
-        const encoded = encodeURIComponent(string)
-        console.log(build)
-        return `${window.location.origin}/builder?data?=${encoded}`
-    }
-
-    useEffect(() => {
-        const params = new URLSearchParams(window.location.search)
-        if(character){
-            const personagem = params.set(`character`, String(character.id))
-            router.replace(`?${params.toString()}`, undefined)
-        }
-        const dataParam = params.get("data")
-        if(dataParam){
-            try {
-                const json = decodeURIComponent(dataParam)
-                const build: Build = JSON.parse(json)
-                setCharacter(build.personagem)
-                setOrbeAtiva(build.orbesAtivos)
-            } catch (e){
-                console.log(e)
-            }
-        }
-    }, [])
-
+    // const gerarLink = (build: Build) => {
+    //     const string = JSON.stringify(build)
+    //     const encoded = encodeURIComponent(string)
+    //     console.log(build)
+    //     return `${window.location.origin}/builder?data?=${encoded}`
+    // }
 
   return (
           <div className="flex flex-col justify-center items-center w-full min-h-screen" >
@@ -284,7 +337,7 @@ const page = () => {
                         <div>
                             <h3>Troféu 1</h3>
                             {trofeus.slice(0, 1).map(trofeu => (
-                                <div key={trofeu.id} className='w-14 h-14' onClick={() => {handleRemoveTrofeu(trofeu.id)}}>
+                                <div key={trofeu.id} className='w-14 h-14'>
                                     <img src={`${trofeu ? trofeu.img : ''}`} alt="" />
                                 </div>
                             ))}
@@ -292,7 +345,7 @@ const page = () => {
                         <div>
                             <h3>Troféu 2</h3>
                             {trofeus.slice(1, 2).map(trofeu => (
-                                <div key={trofeu.id} className='w-14 h-14' onClick={() => {handleRemoveTrofeu(trofeu.id)}}>
+                                <div key={trofeu.id} className='w-14 h-14'>
                                     <img src={`${trofeu ? trofeu.img : ''}`} alt="" />
                                 </div>
                             ))}
@@ -301,7 +354,7 @@ const page = () => {
                         <div>
                             <div className='mb-5'>
                                 <label htmlFor="character">Escolha seu personagem:</label>
-                                <select onChange={handleCharacterChange} onClick={() => {handleAddCharacter(character)}} name="character" id="character">
+                                <select onChange={handleCharacterChange} onClick={() => {handleAddCharacter(character)}} name="character" id="character" value={character.name}>
                                     {characters.map((char, index) => (
                                         <option key={index} value={char.name}>{char.name}</option>
                                     ))}
@@ -316,7 +369,7 @@ const page = () => {
                         <div>
                             <h3>Artefato 1</h3>
                             {artefatos.slice(0, 1).map(artefato => (
-                                <div key={artefato.id} className='w-14 h-14' onClick={() => {handleRemoveArtefato(artefato.id)}}>
+                                <div key={artefato.id} className='w-14 h-14' >
                                     <img src={`${artefatos ? artefato.img : ''}`} alt="" />
                                 </div>
                             ))}
@@ -324,7 +377,7 @@ const page = () => {
                         <div>
                             <h3>Artefato 2</h3>
                             {artefatos.slice(1, 2).map(artefato => (
-                                <div key={artefato.id} className='w-14 h-14' onClick={() => {handleRemoveArtefato(artefato.id)}}>
+                                <div key={artefato.id} className='w-14 h-14'>
                                     <img src={`${artefatos ? artefato.img : ''}`} alt="" />
                                 </div>
                             ))}
@@ -352,7 +405,7 @@ const page = () => {
                                     {Object.entries(orbeAtiva).map(([skillId, skill]) => (
                                         Number(skillId) === skillActive ? (
                                             skill.map(orbe => (
-                                            <div key={skillId} className='flex justify-center items-center' onClick={() => {handleRemoveOrbe(orbe)}} >
+                                            <div key={skillId} className='flex justify-center items-center'>
                                                 <img src={orbe.img} alt={orbe.name} />
                                             </div>
                                         ))
