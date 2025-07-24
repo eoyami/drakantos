@@ -45,9 +45,12 @@ const page = () => {
 
             if(searchParams.has('character')){
                 personagemId = Number(searchParams.get('character'))
-                setCharacter(characters[personagemId - 1])
+                if(personagemId <= characters.length){
+                    setCharacter(characters[personagemId - 1])
+                } else {
+                    setCharacter(characters[0])
+                }
             }
-            searchParams.set('character', personagemId.toString())
             //ORBES
             for(const [key, value] of searchParams.entries()){
                 const num = Number(value)
@@ -77,6 +80,8 @@ const page = () => {
                     }
                 }
             }
+            searchParams.set('character', personagemId.toString())
+            router.push(`?${searchParams.toString()}`)
         }
     }, [])
 

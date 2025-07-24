@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { AiOutlineMenu } from "react-icons/ai";
 import Link from 'next/link';
-
 const Navbar = () => {
     
     const [isFixed, setIsFixed] = useState(false)
