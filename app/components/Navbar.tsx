@@ -63,7 +63,7 @@ const Navbar = () => {
             <div className='hidden md:flex p-4 space-x-4'>
                 <Link className='hover:text-[#F4CF8B]' href="/galeria" onClick={handleMenu}>Galeria</Link>
                 <Link className='hover:text-[#F4CF8B]' href="/sistemas" onClick={handleMenu}>Sistemas</Link>
-                <Link className='hover:text-[#F4CF8B]' href="/builder" onClick={handleMenu}>Builder</Link>
+                <Link className='hover:text-[#F4CF8B]' href="/builder?character=1" onClick={handleMenu}>Builder</Link>
             </div>
         </div>
     </nav>
@@ -80,7 +80,7 @@ const Navbar = () => {
                         <Link className='py-2 px-4 border-b border-white w-full' href="/historia" onClick={closeMenu}>História</Link>
                         <Link className='py-2 px-4 border-b border-white w-full' href="/galeria" onClick={closeMenu}>Galeria</Link>
                         <Link className='py-2 px-4 border-b border-white w-full' href="/sistemas" onClick={closeMenu}>Sistemas</Link>
-                        <Link className='py-2 px-4 border-b border-white w-full' href="/builder" onClick={closeMenu}>Builder</Link>
+                        <Link className='py-2 px-4 border-b border-white w-full' href="/builder?character=1" onClick={closeMenu}>Builder</Link>
                     </ul>
                 </div>
     </div>
