@@ -16,7 +16,7 @@ export type Orbes = {
   img: string
 }
 
-type CharacterProps = {
+export type CharacterProps = {
     id: number,
     name: string,
     smallImg: string,
@@ -115,21 +115,92 @@ type CharacterProps = {
         }
       }
     ,
-    // {
-    //   id: 2,
-    //   name: "Arryn",
-    //   smallImg: "/arryn.png",
-    //   bigImg: "/arryn_big.png",
-    //   alt: "Arryn",
-    //   type: "dps",
-    //   description: "Arryn é um ágil guerreiro, conhecido por sua velocidade e precisão em combate. Sua lâmina é tão rápida quanto mortal.",
-    //   skills: [
-    //     {
-    //       id: 1,
-    //       name: "Lamina do Mameydinouvo"
-    //     }
-    //   ]
-    // },
+    {
+      id: 2,
+      name: "Arryn",
+      smallImg: "/arryn.png",
+      bigImg: "/arryn_big.png",
+      alt: "Arryn",
+      type: "dps",
+      description: "Arryn é um ágil guerreiro, conhecido por sua velocidade e precisão em combate. Sua lâmina é tão rápida quanto mortal.",
+      skills: {
+        1: [
+          {
+            id: 1,
+            name: "Lamina do Mameydinouvo",
+            orbes: [
+              {
+                id: 1,
+                name: "Orbe do Syleumamou",
+                img: orbe.src
+              },
+              {
+                id: 2,
+                name: "Orbe do Syleumamou",
+                img: orbe_4.src
+              },
+              {
+                id: 3,
+                name: "Orbe do Syleumamou",
+                img: orbe_5.src
+              }
+            ],
+          },
+        ],
+          2 : [
+            {
+            id: 2,
+            name: "Carnificina da Mamância",
+            orbes: [
+              {
+                id: 4,
+                name: "Orbe do Beta",
+                img: orbe_2.src
+              },
+              {
+                id: 5,
+                name: "Orbe do Beta",
+                img: orbe_5.src
+              },
+            ]
+          },
+          ],
+          3: [
+            {
+            id: 3,
+            name: "Carnificina da Mamância",
+            orbes: [
+              {
+                id: 6,
+                name: "Orbe do Beta",
+                img: orbe_3.src
+              },
+            ]
+          },
+          ],
+          4: [
+            {
+            id: 4,
+            name: "Carnificina da Mamância",
+            orbes: []
+          },
+          ],
+          5: [
+            {
+            id: 5,
+            name: "Carnificina da Mamância",
+            orbes: []
+          },
+          ],
+          6: [
+            {
+            id: 6,
+            name: "Carnificina da Mamância",
+            orbes: []
+          }
+          ]
+        }
+    },
     // {
     //   id: 3,
     //   name: "Byron",

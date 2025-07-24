@@ -5,13 +5,23 @@ import { useState } from 'react';
 import artefato from '@/public/artefato.png'
 import trofeu from '@/public/trofeu.png'
 import type { Orbes } from '../characters';
+import type { CharacterProps } from '../characters';
+import { useRouter } from 'next/navigation';
 
 const page = () => {
+    const router = useRouter()
     type TrophysAndArtefact = {
         id: number,
         name: string,
         img: string,
         type: string
+    }
+
+    type Build = {
+        personagem: CharacterProps,
+        orbesAtivos: Record<number, Orbes[]>,
+        trofeusAtivos: Record<number, TrophysAndArtefact[]>,
+        artefatosAtivos: Record<number, TrophysAndArtefact[]> 
     }
 
     const [character, setCharacter] = useState(characters[0]);
@@ -24,6 +34,8 @@ const page = () => {
     const [selectTrofeuId, setSelectTrofeuId] = useState<TrophysAndArtefact[]>([])
     const [orbeSelected, setOrbeSelected] = useState<Record<number, Orbes[]>>({})
 
+
+    
 
     const tabs = [
         {   id: 1,
@@ -81,6 +93,15 @@ const page = () => {
             setCharacter(selectedCharacter);
         }
     };
+
+    const handleAddCharacter = (character: CharacterProps) => {
+            const currentParams = new URLSearchParams(window.location.search)
+            const selecionado = currentParams.has("character")
+            if(selecionado){
+                currentParams.set("character", String(character.id))
+                router.replace(`?${currentParams.toString()}`, undefined)
+            }
+    }
 
     const handleAddArtefato = (artefato: TrophysAndArtefact) => {
         const isSelected = selectArtefatoId.some(item => item.id === artefato.id)
@@ -221,6 +242,33 @@ const page = () => {
         })
     }
 
+    const gerarLink = (build: Build) => {
+        const string = JSON.stringify(build)
+        const encoded = encodeURIComponent(string)
+        console.log(build)
+        return `${window.location.origin}/builder?data?=${encoded}`
+    }
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search)
+        if(character){
+            const personagem = params.set(`character`, String(character.id))
+            router.replace(`?${params.toString()}`, undefined)
+        }
+        const dataParam = params.get("data")
+        if(dataParam){
+            try {
+                const json = decodeURIComponent(dataParam)
+                const build: Build = JSON.parse(json)
+                setCharacter(build.personagem)
+                setOrbeAtiva(build.orbesAtivos)
+            } catch (e){
+                console.log(e)
+            }
+        }
+    }, [])
+
+
   return (
           <div className="flex flex-col justify-center items-center w-full min-h-screen" >
             <div className=" w-full min-h-screen bg-[url('/background_coliseu.png')] bg-cover bg-no-repeat sm:bg-fixed">
@@ -253,7 +301,7 @@ const page = () => {
                         <div>
                             <div className='mb-5'>
                                 <label htmlFor="character">Escolha seu personagem:</label>
-                                <select onChange={handleCharacterChange} name="character" id="character">
+                                <select onChange={handleCharacterChange} onClick={() => {handleAddCharacter(character)}} name="character" id="character">
                                     {characters.map((char, index) => (
                                         <option key={index} value={char.name}>{char.name}</option>
                                     ))}
@@ -356,6 +404,7 @@ const page = () => {
                     </div>
                 </div>
               </div>
+              <button className='bg-gray-500/50 p-3 text-white mt-2 hover:cursor-pointer'>Compartilhe sua build</button>
               </div>
             </div>
           </div>
