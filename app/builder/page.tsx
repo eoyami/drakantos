@@ -38,19 +38,16 @@ const page = () => {
         useEffect(() => {
             //PERSONAGEM
         if(typeof window !== undefined){
+
             const searchParams = new URLSearchParams(window.location.search)
             setParams(searchParams)
             let personagemId = characters[0].id
 
-            router.replace(`?character=${personagemId}`,{ scroll: false})
-            if(searchParams && searchParams.has('character')){
+            if(searchParams.has('character')){
                 personagemId = Number(searchParams.get('character'))
                 setCharacter(characters[personagemId - 1])
-                return
             }
-            setCharacter(characters[personagemId - 1])
-
-
+            searchParams.set('character', personagemId.toString())
             //ORBES
             for(const [key, value] of searchParams.entries()){
                 const num = Number(value)
@@ -314,12 +311,13 @@ const page = () => {
         })
     }
 
-    // const gerarLink = (build: Build) => {
-    //     const string = JSON.stringify(build)
-    //     const encoded = encodeURIComponent(string)
-    //     console.log(build)
-    //     return `${window.location.origin}/builder?data?=${encoded}`
-    // }
+    const gerarLink = () => {
+        if(params){
+            const url = window.location
+            navigator.clipboard.writeText(String(url))
+            alert("Link copiado com sucesso!")
+        }
+    }
 
   return (
           <div className="flex flex-col justify-center items-center w-full min-h-screen" >
@@ -456,7 +454,7 @@ const page = () => {
                     </div>
                 </div>
               </div>
-              <button className='bg-gray-500/50 p-3 text-white mt-2 hover:cursor-pointer'>Compartilhe sua build</button>
+              <button className='bg-gray-500/50 p-3 text-white mt-2 hover:cursor-pointer' onClick={gerarLink}>Copiar link</button>
               </div>
             </div>
           </div>
