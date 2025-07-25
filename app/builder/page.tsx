@@ -355,8 +355,10 @@ const page = () => {
                     </div>
                         <div>
                             <div className='mb-5'>
-                                <label htmlFor="character">Escolha seu personagem:</label>
-                                <select onChange={handleCharacterChange} onClick={() => {handleAddCharacter(character)}} name="character" id="character" value={character.name}>
+                                <div className='text-center'>
+                                    <label htmlFor="character">Escolha seu personagem:</label>
+                                </div>
+                                <select className='w-full text-center' onChange={handleCharacterChange} onClick={() => {handleAddCharacter(character)}} name="character" id="character" value={character.name}>
                                     {characters.map((char, index) => (
                                         <option key={index} value={char.name}>{char.name}</option>
                                     ))}
