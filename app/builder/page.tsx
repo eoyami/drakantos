@@ -326,7 +326,7 @@ const page = () => {
 
   return (
           <div className="flex flex-col justify-center items-center w-full min-h-screen" >
-            <div className=" w-full min-h-screen bg-[url('/background_coliseu.png')] bg-cover bg-no-repeat sm:bg-fixed">
+            <div className="w-full min-h-screen bg-[url('/background_coliseu.png')] bg-cover bg-fixed md:bg-no-repeat sm:bg-fixed">
             <div className="flex flex-col items-center w-full p-2">
               <div>
                 <h1 id="frase" className="text-center text-white text-3xl text-shadow-md lg:mt-[5rem] mt-[2rem]">WIP - Builder</h1>
