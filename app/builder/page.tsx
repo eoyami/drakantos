@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { ChangeEvent, useEffect } from 'react'
 import { characters } from '../characters'
 import { useState } from 'react';
 import artefato from '@/public/artefato.png'
@@ -30,6 +30,8 @@ const page = () => {
     const [artefatos, setArtefatos] = useState<TrophysAndArtefact[]>([])
     const [trofeus, setTrofeus] = useState<TrophysAndArtefact[]>([])
     const [orbeAtiva, setOrbeAtiva] = useState<Record<number, Orbes[]>>({})
+    const [inputTrofeu, setInputTrofeu] = useState<string>('')
+    const [inputArtefato, setInputArtefato] = useState<string>('') 
     // const [selectArtefatoId, setSelectArtefatoId] = useState<TrophysAndArtefact[]>([])
     // const [selectTrofeuId, setSelectTrofeuId] = useState<TrophysAndArtefact[]>([])
     // const [orbeSelected, setOrbeSelected] = useState<Record<number, Orbes[]>>({})
@@ -324,6 +326,16 @@ const page = () => {
         }
     }
 
+    const handleChangeInputTrofeu = (e: ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault()
+        setInputTrofeu(e.target.value)
+    }
+
+    const handleChangeInputArtefato = (e: ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault()
+        setInputArtefato(e.target.value)
+    }
+
   return (
           <div className="flex flex-col justify-center items-center w-full min-h-screen" >
             <div className="w-full min-h-screen bg-[url('/background_coliseu.png')] bg-cover bg-fixed md:bg-no-repeat sm:bg-fixed">
@@ -337,7 +349,7 @@ const page = () => {
                         <div id='character' className='flex justify-center items-center gap-2'>
                     <div id='trofeus' className='flex flex-col justify-center items-center h-full gap-5'>
                         <div>
-                            <h3>Troféu 1</h3>
+                            <h3 className='text-xl text-center'>T1</h3>
                             {trofeus.slice(0, 1).map(trofeu => (
                                 <div key={trofeu.id} className='w-14 h-14'>
                                     <img src={`${trofeu ? trofeu.img : ''}`} alt="" />
@@ -345,7 +357,7 @@ const page = () => {
                             ))}
                         </div>
                         <div>
-                            <h3>Troféu 2</h3>
+                            <h3 className='text-xl text-center'>T2</h3>
                             {trofeus.slice(1, 2).map(trofeu => (
                                 <div key={trofeu.id} className='w-14 h-14'>
                                     <img src={`${trofeu ? trofeu.img : ''}`} alt="" />
@@ -365,13 +377,13 @@ const page = () => {
                                 </select>
                             </div>
                             <h2 className='text-2xl text-center'>{character.name}</h2>
-                        <div className='flex flex-col items-center h-full md:w-96 w-full'>
-                            <img src={character.bigImg} alt={character.name} className=" rounded-full" />
+                        <div className='flex flex-col items-center min-h-full md:w-96 w-full'>
+                            <img src={character.bigImg} alt={character.name}/>
                         </div>
                         </div>
                         <div id='artefatos' className='flex flex-col justify-center items-center h-full gap-5'>
                         <div>
-                            <h3>Artefato 1</h3>
+                            <h3 className='text-xl text-center'>A1</h3>
                             {artefatos.slice(0, 1).map(artefato => (
                                 <div key={artefato.id} className='w-14 h-14' >
                                     <img src={`${artefatos ? artefato.img : ''}`} alt="" />
@@ -379,7 +391,7 @@ const page = () => {
                             ))}
                         </div>
                         <div>
-                            <h3>Artefato 2</h3>
+                            <h3 className='text-xl text-center'>A2</h3>
                             {artefatos.slice(1, 2).map(artefato => (
                                 <div key={artefato.id} className='w-14 h-14'>
                                     <img src={`${artefatos ? artefato.img : ''}`} alt="" />
@@ -446,10 +458,22 @@ const page = () => {
                                 .map(tab =>
                                     <div key={tab.id} className='flex flex-col w-full p-3'>
                                         <div className='flex w-full border-1 border-gray-500'>
-                                            <input type="text" className='w-full p-3 outline-none text-xl' placeholder={`Pesquise aqui seus ${activeTab === tab.id ? tab.name : ''}`} />
+                                            {tab.id === 1 ? ( 
+                                                <input type="text" className='w-full p-3 outline-none text-xl' value={inputTrofeu} onChange={handleChangeInputTrofeu} placeholder={`Pesquise aqui seus troféus`} />
+                                            ) : (
+                                                <input type="text" className='w-full p-3 outline-none text-xl' value={inputArtefato} onChange={handleChangeInputArtefato} placeholder={`Pesquise aqui seus artefatos`} />
+                                            )
+                                            }
+                                            
                                         </div>
                                         <div className='flex'>
-                                            {tab.content.map((item, idx) => (
+                                            {tab.content.filter(item => {
+                                                const currentInput = tab.id === 1 ? inputTrofeu : inputArtefato
+                                                return (
+                                                     currentInput === '' || item.name.toLowerCase().includes(currentInput.toLowerCase())
+                                                )
+                                            }
+                                            ).map((item, idx) => (
                                             <div key={idx} className={`flex flex-col items-center p-2 hover:bg-gray-500/30 hover:cursor-pointer ${isItemSelected(item.type, item.id) ? `border-1 border-red-500` : ''}`} onClick={() => { item.type === "trofeu" ? handleAddTrofeu(item) : handleAddArtefato(item); }}>
                                                 <img src={item.img} alt={item.name} className="w-24 h-24 mb-2" />
                                             </div>
