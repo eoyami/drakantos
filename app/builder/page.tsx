@@ -466,7 +466,7 @@ const page = () => {
                                             }
                                             
                                         </div>
-                                        <div className='flex'>
+                                        <div className='flex flex-wrap'>
                                             {tab.content.filter(item => {
                                                 const currentInput = tab.id === 1 ? inputTrofeu : inputArtefato
                                                 return (
