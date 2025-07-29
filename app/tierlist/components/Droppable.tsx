@@ -14,7 +14,7 @@ const Droppable = ({ id, title, children, color }: Props) => {
   return (
     <div
       ref={setNodeRef}
-      className="flex w-full rounded-lg border-2 transition-colors"
+      className="flex min-h-[150px] w-full rounded-lg border-2 transition-colors"
       style={{
         backgroundColor: isOver ? "rgba(34,197,94,0.3)" : "rgba(31,31,31,0.7)",
         borderColor: isOver ? "#22c55e" : "#555",
