@@ -28,7 +28,7 @@ const Droppable = ({ id, title, children, color }: Props) => {
           <input type="text" id={title} className="text-center outline-none" placeholder={title} />
         </div>
       )}
-      <div className="flex flex-wrap justify-center items-center">{children}</div>
+      <div className="flex flex-wrap justify-start items-center">{children}</div>
     </div>
   );
 };
