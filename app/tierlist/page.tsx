@@ -29,7 +29,7 @@ type TierState = {
   }[];
 };
 
-const page = () => {
+export default function Page () {
 
     const [tierState, setTierState] = useState<TierState>({
         bench: characters.map(({skills, description, type, bigImg, ...rest }) => rest),
@@ -180,5 +180,3 @@ const handleDragEnd = (event: DragEndEvent) => {
           </div>
   )
 }
-
-export default page
