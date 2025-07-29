@@ -56,6 +56,7 @@ const Navbar = () => {
             <div className='hidden md:flex p-4 space-x-4'>
                 <Link className='hover:text-[#F4CF8B]' href="/" onClick={handleMenu}>Início</Link>
                 <Link className='hover:text-[#F4CF8B]' href="/historia" onClick={handleMenu}>História</Link>
+                <Link className='hover:text-[#F4CF8B]' href="/tierlist" onClick={handleMenu}>Tierlist Maker</Link>
             </div>
             <div id='logo' className='relative w-[300px]'>
                 <Image className='absolute top-0 z-20' src="/drakantos_logo.png" draggable={false} width={300} height={100} alt=""></Image>
@@ -81,6 +82,7 @@ const Navbar = () => {
                         <Link className='py-2 px-4 border-b border-white w-full' href="/galeria" onClick={closeMenu}>Galeria</Link>
                         <Link className='py-2 px-4 border-b border-white w-full' href="/sistemas" onClick={closeMenu}>Sistemas</Link>
                         <Link className='py-2 px-4 border-b border-white w-full' href="/builder?character=1" onClick={closeMenu}>Builder</Link>
+                        <Link className='py-2 px-4 border-b border-white w-full' href="/tierlist" onClick={closeMenu}>Tierlist Maker</Link>
                     </ul>
                 </div>
     </div>
