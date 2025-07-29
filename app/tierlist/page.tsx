@@ -6,6 +6,8 @@ import type { CharacterProps } from '../characters';
 import Droppable from './components/Droppable';
 import Draggable from './components/Draggable';
 import { SortableContext, arrayMove } from '@dnd-kit/sortable';
+import { toPng } from 'html-to-image';
+import { useRef } from 'react';
 
 
 type CharacterTier = Omit<CharacterProps, 'skills' | 'description' | 'type' | 'bigImg'>
@@ -32,8 +34,11 @@ const page = () => {
     const [tierState, setTierState] = useState<TierState>({
         bench: characters.map(({skills, description, type, bigImg, ...rest }) => rest),
         containers: [
-            { id: 1, title: "SSS", color: "#e83336", chars: [] },
-            { id: 2, title: "SS", color: "#eb6769", chars: [] },
+            { id: 1, title: "S", color: "#FF7F7F", chars: [] },
+            { id: 2, title: "A", color: "#FFBF7F", chars: [] },
+            { id: 3, title: "B", color: "#FFDF7F", chars: [] },
+            { id: 4, title: "C", color: "#FFFF7F", chars: [] },
+            { id: 5, title: "D", color: "#BFFF7F", chars: [] }
         ],
     });
 
@@ -113,13 +118,16 @@ const handleDragEnd = (event: DragEndEvent) => {
     }
   });
 };
+    const downloadRef = useRef<HTMLDivElement>(null)
+    const handleDownload = async () => {
+        if(!downloadRef.current) return
+        const dataUrl = await toPng(downloadRef.current)
+        const link = document.createElement("a")
+        link.download = "tierlist_drakantos.png"
+        link.href = dataUrl
+        link.click()
 
-
-    const handleAddColumn = () => {
-        alert('Isso nem funciona (por enquanto), assim como os servidores atuais de Drakantos')
     }
-
-
 
   return (
           <div className="flex flex-col justify-center items-center w-full min-h-screen" >
@@ -131,7 +139,7 @@ const handleDragEnd = (event: DragEndEvent) => {
               <div className="flex flex-col sm:flex-row mt-4 text-white w-full gap-2 bg-black/65 min-h-screen justify-start sm:justify-center">
                 <DndContext onDragEnd={handleDragEnd}>
                     <div className='flex flex-col justify-between p-2 md:px-10 md:w-full py-3 justify-start items-start gap-2'>
-                        <div className='flex flex-col justify-center w-full'>
+                            <div className='flex flex-col justify-center w-full' ref={downloadRef}>
                                 {tierState.containers.map((container) => (
                                     <SortableContext key={container.id} items={container.chars.map(c => c.id.toString())}>
                                         <Droppable id={`container-${container.id}`} title={container.title} color={container.color}>
@@ -147,8 +155,8 @@ const handleDragEnd = (event: DragEndEvent) => {
                                     </SortableContext>
                                     ))}
                         </div>
-                        <div className='flex w-full justify-center items-center '>
-                            <button className='bg-gray-700 p-3 border-1 border-white rounded-lg hover:bg-gray-500 hover:cursor-pointer' onClick={handleAddColumn}>Adicione mais colunas</button>
+                        <div className='flex w-full justify-center items-center'>
+                            <button className='bg-gray-700 p-3 border-1 border-white rounded-lg hover:bg-gray-500 hover:cursor-pointer' onClick={handleDownload}>Baixar Tierlist</button>
                         </div>
                     </div>
                     <div id='miscellaneous' className='flex flex-col gap-2 w-full bg-gray-500/30'>
