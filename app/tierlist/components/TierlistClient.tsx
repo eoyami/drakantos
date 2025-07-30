@@ -1,7 +1,7 @@
 'use client'
 import { characters } from '../../characters'
 import { useState } from 'react';
-import { DndContext, DragEndEvent, useSensors, useSensor, TouchSensor } from '@dnd-kit/core';
+import { DndContext, DragEndEvent, useSensors, useSensor, TouchSensor, MouseSensor } from '@dnd-kit/core';
 import type { CharacterProps } from '../../characters';
 import Droppable from './Droppable';
 import Draggable from './Draggable';
@@ -149,7 +149,14 @@ const handleDragEnd = (event: DragEndEvent) => {
       }
     })
 
-    const sensors = useSensors(touchSensor)
+    const mouseSensor = useSensor(MouseSensor, {
+      activationConstraint: {
+        delay: 250,
+        tolerance: 5
+      }
+    })
+
+    const sensors = useSensors(touchSensor, mouseSensor)
 
 
 
