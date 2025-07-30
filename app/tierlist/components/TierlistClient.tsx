@@ -151,7 +151,7 @@ const handleDragEnd = (event: DragEndEvent) => {
 
     const mouseSensor = useSensor(MouseSensor, {
       activationConstraint: {
-        delay: 250,
+        delay: 0,
         tolerance: 5
       }
     })
