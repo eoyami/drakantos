@@ -28,7 +28,7 @@ export default function Home() {
       <div className="flex flex-col justify-center items-center w-full bg-[url('/background_coliseu.png')] bg-cover bg-center bg-no-repeat" >
         <div className="flex flex-col items-center bg-linear-to-t from-black to-transparent w-full p-2">
           <div className="flex flex-col justify-center items-center w-full h-screen">
-          <h1 id="frase" className="text-center text-white text-xl lg:text-2xl text-shadow-md lg:mt-[10rem] mt-[2rem]">Um MMORPG pixel art brasileiro com heróis únicos e ação em tempo real</h1>
+          <h1 id="frase" className="text-center text-white text-xl lg:text-2xl text-shadow-md lg:mt-[5rem] mt-[2rem]">Um MMORPG pixel art brasileiro com heróis únicos e ação em tempo real</h1>
           <div className="flex justify-center items-center mt-4 bg-black/30 p-4">
             <div className="w-full h-full">
               <iframe className="lg:min-w-[640px] md:max-w-[500px] lg:min-h-[360px] md:max-h-[250px] w-[640px] h-[360px] w-full" width="100%" height="100%" src="https://www.youtube.com/embed/CCXVQxJkBtQ?si=8zw2lnf7nDYetGJE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
