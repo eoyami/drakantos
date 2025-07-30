@@ -52,24 +52,18 @@ const handleDragEnd = (event: DragEndEvent) => {
 
   setTierState((prev) => {
     const containersCopy = prev.containers.map(c => ({ ...c, chars: [...c.chars] }));
-
-    // Função auxiliar: encontrar onde um id está
     const findContainer = (id: string) => {
       if (id === "bench") return "bench";
       const c = containersCopy.find(cont => `container-${cont.id}` === id);
       return c ? c : null;
     };
-
     const sourceContainer = findContainer(
       containersCopy.find(c => c.chars.some(char => char.id.toString() === activeId))
         ? `container-${containersCopy.find(c => c.chars.some(char => char.id.toString() === activeId))!.id}`
         : (prev.bench.some(char => char.id.toString() === activeId) ? "bench" : "")
     );
-
     const destinationContainer = findContainer(overId);
     if (!destinationContainer) return prev;
-
-    // MESMO CONTAINER → apenas reordenar
     if (sourceContainer === destinationContainer) {
       if (sourceContainer === "bench") {
         const oldIndex = prev.bench.findIndex(c => c.id.toString() === activeId);
@@ -86,11 +80,7 @@ const handleDragEnd = (event: DragEndEvent) => {
         return { ...prev, containers: containersCopy };
       }
     }
-
-    // CONTAINERS DIFERENTES → mover entre eles
     let movedChar: CharacterTier | undefined;
-
-    // remover do source
     if (sourceContainer === "bench") {
       const idx = prev.bench.findIndex(c => c.id.toString() === activeId);
       movedChar = prev.bench[idx];
@@ -99,10 +89,7 @@ const handleDragEnd = (event: DragEndEvent) => {
       const idx = cont.chars.findIndex(c => c.id.toString() === activeId);
       [movedChar] = cont.chars.splice(idx, 1);
     }
-
     if (!movedChar) return prev;
-
-    // adicionar no destino
     if (destinationContainer === "bench") {
       return {
         ...prev,
