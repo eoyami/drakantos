@@ -25,6 +25,7 @@ export type CharacterProps = {
     type: "support" | "tank" | "dps" | "none",
     description: string,
     skills: Record<number, Skills[]>,
+    history: string
   }
   
   export const characters: CharacterProps[] = [
@@ -112,7 +113,8 @@ export type CharacterProps = {
             orbes: []
           }
           ]
-        }
+        },
+        history: "WIP"
       }
     ,
     {
@@ -199,7 +201,8 @@ export type CharacterProps = {
             orbes: []
           }
           ]
-        }
+        },
+        history: ""
     },
     {
       id: 3,
@@ -209,7 +212,8 @@ export type CharacterProps = {
       alt: "Byron",
       type: "support",
       description: "Byron é um elementalista que manipula os elementos para proteger aliados e desferir ataques devastadores contra inimigos.",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 4,
@@ -219,7 +223,8 @@ export type CharacterProps = {
       alt: "Iris",
       type: "tank",
       description: "Iris é uma ilusionista que utiliza magia para confundir inimigos e proteger seus aliados com escudos mágicos.",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 5,
@@ -229,7 +234,8 @@ export type CharacterProps = {
       alt: "Kavras",
       type: "support",
       description: "Kavras é um necromante poderoso, capaz de invocar os mortos e manipular a energia vital para auxiliar seus aliados.",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 6,
@@ -239,7 +245,8 @@ export type CharacterProps = {
       alt: "Korz",
       type: "tank",
       description: "Korz é um guerreiro imponente, cuja força bruta e resistência o tornam uma muralha intransponível no campo de batalha.",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 7,
@@ -249,7 +256,8 @@ export type CharacterProps = {
       alt: "Ojore",
       type: "tank",
       description: "Ojore é um defensor incansável, sempre na linha de frente para proteger seus companheiros com coragem e determinação.",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 8,
@@ -259,7 +267,8 @@ export type CharacterProps = {
       alt: "Ophis",
       type: "dps",
       description: "Ophis é uma feiticeira misteriosa que canaliza o poder do caos para desferir ataques mágicos de grande intensidade.",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 9,
@@ -269,7 +278,8 @@ export type CharacterProps = {
       alt: "Orbryn",
       type: "dps",
       description: "Orbryn é um arqueiro preciso, cuja habilidade com o arco é incomparável, atingindo alvos com letalidade à distância.",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 10,
@@ -279,7 +289,8 @@ export type CharacterProps = {
       alt: "Reya",
       type: "dps",
       description: "Reya é uma guerreira elétrica, que combina velocidade e ataques de raio para eliminar seus inimigos rapidamente.",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 11,
@@ -289,7 +300,8 @@ export type CharacterProps = {
       alt: "Thomas",
       type: "support",
       description: "Thomas é um bardo felino que utiliza melodias encantadoras para fortalecer aliados e enfraquecer adversários.",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 12,
@@ -299,7 +311,8 @@ export type CharacterProps = {
       alt: "Urijor",
       type: "tank",
       description: "Urijor, conhecido como o 'Druida Louco', manipula a natureza de forma imprevisível para proteger e atacar com ferocidade.",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 13,
@@ -309,7 +322,8 @@ export type CharacterProps = {
       alt: "faendar",
       type: "support",
       description: "PLACEHOLDER",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 14,
@@ -319,7 +333,8 @@ export type CharacterProps = {
       alt: "irhaal",
       type: "dps",
       description: "PLACEHOLDER",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 15,
@@ -329,7 +344,8 @@ export type CharacterProps = {
       alt: "liam",
       type: "tank",
       description: "PLACEHOLDER",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 16,
@@ -339,7 +355,8 @@ export type CharacterProps = {
       alt: "marly",
       type: "support",
       description: "PLACEHOLDER",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 17,
@@ -349,7 +366,8 @@ export type CharacterProps = {
       alt: "mohazus",
       type: "tank",
       description: "PLACEHOLDER",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 18,
@@ -359,7 +377,8 @@ export type CharacterProps = {
       alt: "yuki",
       type: "tank",
       description: "PLACEHOLDER",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 19,
@@ -369,7 +388,8 @@ export type CharacterProps = {
       alt: "yura",
       type: "dps",
       description: "PLACEHOLDER",
-      skills: []
+      skills: [],
+      history: ""
     },
     {
       id: 20,
@@ -379,7 +399,8 @@ export type CharacterProps = {
       alt: "zeugladius",
       type: "support",
       description: "PLACEHOLDER",
-      skills: []
+      skills: [],
+      history: ""
     },
   ];
   

@@ -8,12 +8,12 @@ import { GiCrossedSwords } from "react-icons/gi";
 import Tooltip from './Tooltip';
 
 export type CharacterProps = {
-  id: number,
+  id?: number,
   name: string,
   smallImg: string,
-  bigImg: string,
-  alt: string,
-  type: "support" | "tank" | "dps" | "none",
+  bigImg?: string,
+  alt?: string,
+  type?: "support" | "tank" | "dps" | "none",
   description?: string,
   onClick?: () => void
 }
@@ -37,13 +37,15 @@ const Character = ({id, name, smallImg, alt, type, onClick}: CharacterProps) => 
     <>
           <div key={id} className="flex flex-col justify-center items-center h-36 w-36 bg-black/30 rounded p-2 hover:bg-[#F4CF8B]/30 transition ease-in-out hover:cursor-pointer" onClick={onClick}>
             <div className='flex flex-col justify-center items-center h-full min-h-24 max-h-24'>
-              <Image src={smallImg} width={55} height={70} priority alt={alt} />
+              <Image src={smallImg} width={55} height={70} priority alt={alt!} />
               <div className='flex flex-col items-center justify-center h-full'>
-                <div className='relative'>
-                    <Tooltip label={type}>
+                {type ? (
+                  <div className='relative'>
+                    <Tooltip label={type!}>
                     {renderIcon()}
                     </Tooltip>
                 </div>
+                ): null}
               </div>
               <div className="flex flex-col justify-center pt-2 h-full">
                 <h3>{name.toUpperCase()}</h3>

@@ -1,21 +1,59 @@
+'use client'
 import React from 'react'
 import Image from 'next/image'
-import mundoAberto from '../../public/mundo-aberto.png'
-import mundoDrakantos from '../../public/mundo-drakantos.png'
-import matchmaking from '../../public/matchmaking.png'
 import Link from 'next/link'
+import { useState } from 'react'
+import { characters } from '../characters'
+import Character from '../components/Character'
+import ModalHistory from './components/ModalHistory'
+
+type CharacterHistory = {
+    name: string,
+    history: string,
+    smallImg: string
+}
+
 
 const page = () => {
+
+        const [isModalOpen, setIsModalOpen] = useState(false);
+        const [selectedCharacter, setSelectedCharacter] = useState<CharacterHistory | null>(null);
+      
+        const handleCloseModal = () => {
+          setIsModalOpen(false);
+        }
+      
+        const handleOpenModal = (character: CharacterHistory) => {
+            setSelectedCharacter({ ...character})
+            setIsModalOpen(true);
+          }
+
   return (
           <div className="flex flex-col justify-center items-center w-full min-h-screen" >
             <div className="w-full min-h-screen bg-[url('/background_coliseu.png')] bg-cover bg-fixed md:bg-no-repeat sm:bg-fixed">
+            <ModalHistory isOpen={isModalOpen} onClose={handleCloseModal} character={selectedCharacter}/>
             <div className="flex flex-col items-center w-full p-2">
               <div>
                 <h1 id="frase" className="text-center text-white text-3xl text-shadow-md lg:mt-[5rem] mt-[2rem]">WIP - História</h1>
               </div>
               <div className="flex mt-4 text-white w-full gap-2">
-              <div className='flex flex-col p-5 md:px-10 bg-black/65 w-full md:w-[80%] py-3'>
-                <div className='paragrafo'>
+              <div className='flex flex-col p-2 md:px-5 bg-black/65 w-full md:w-[80%] py-3'>
+                <div className='flex flex-col flex-wrap gap-2 paragrafo'>
+                  <div id='jogaveis'>
+                    <div className='title'>
+                      <h3 className='text-2xl'>Personagens Jogáveis</h3>
+                      <hr />
+                      </div>
+                  </div>
+                  <div className='flex flex-wrap gap-2'>
+                    {characters.map(character => (
+                  <Character key={character.id} name={character.name} smallImg={character.smallImg} alt={character.alt} onClick={() => {handleOpenModal(character)}}/>
+                ))}
+                  </div>
+                </div>
+                {
+                
+                /* <div className='paragrafo'>
                   <div id='sobre'>
                     <div className='title'>
                       <h3 className='text-2xl'>Protótipo - Título</h3>
@@ -25,7 +63,7 @@ const page = () => {
                   <div className='text'>
                     <p>Protótipo - História</p>
                   </div>
-                </div>
+                </div> */}
                 {/* FIM DO CONTEÚDO */}
               </div>
               <div className='relative flex indice'>
@@ -33,7 +71,7 @@ const page = () => {
                     <h3 className='text-2xl'>Índice</h3>
                     <hr className='mb-2' />
                   <ul>
-                    <li><Link href={'#sobre'} className='hover:text-gray-500'>Personagens Jogáveis</Link></li>
+                    <li><Link href={'#jogaveis'} className='hover:text-gray-500'>Personagens Jogáveis</Link></li>
                   </ul>
                 </div>
               </div>
