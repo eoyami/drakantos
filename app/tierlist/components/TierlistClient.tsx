@@ -31,6 +31,7 @@ type TierState = {
 
 export default function TierlistClient () {
 
+    const [columnNumber, setColumnNumber] = useState<number>(1)
     const [tierState, setTierState] = useState<TierState>({
         bench: characters.map(({skills, description, type, bigImg, ...rest }) => rest),
         containers: [
@@ -126,8 +127,19 @@ const handleDragEnd = (event: DragEndEvent) => {
         link.download = "tierlist_drakantos.png"
         link.href = dataUrl
         link.click()
-
     }
+
+    const handleAddTier = () => {
+      if(columnNumber >= 5) return
+      setColumnNumber((prev) => (prev + 1))
+    }
+
+    const handleRemoveTier = () => {
+      if(columnNumber <= 1) return
+      setColumnNumber((prev) => (prev - 1))
+    }
+
+
 
   return (
           <div className="flex flex-col justify-center items-center w-full min-h-screen" >
@@ -140,7 +152,7 @@ const handleDragEnd = (event: DragEndEvent) => {
                 <DndContext onDragEnd={handleDragEnd}>
                     <div className='flex flex-col justify-between p-2 md:px-10 md:w-full py-3 justify-start items-start gap-2'>
                             <div className='flex flex-col justify-center w-full' ref={downloadRef}>
-                                {tierState.containers.map((container) => (
+                                {tierState.containers.slice(0,columnNumber).map((container) => (
                                     <SortableContext key={container.id} items={container.chars.map(c => c.id.toString())}>
                                         <Droppable id={`container-${container.id}`} title={container.title} color={container.color}>
                                         {container.chars.map((character) => (
@@ -155,8 +167,18 @@ const handleDragEnd = (event: DragEndEvent) => {
                                     </SortableContext>
                                     ))}
                         </div>
-                        <div className='flex w-full justify-center items-center'>
-                            <button className='bg-gray-700 p-3 border-1 border-white rounded-lg hover:bg-gray-500 hover:cursor-pointer' onClick={handleDownload}>Baixar Tierlist</button>
+                        <div className='flex flex-col gap-2 w-full justify-center items-center'>
+                          <div className='flex'>
+                            {columnNumber < 5 ? (
+                              <button className='bg-gray-700 p-3 border-1 border-white rounded-lg hover:bg-gray-500 hover:cursor-pointer' onClick={handleAddTier}>Adicionar coluna</button>
+                            ) : null}
+                            {columnNumber > 1 ? (
+                              <button className='bg-gray-700 p-3 border-1 border-white rounded-lg hover:bg-gray-500 hover:cursor-pointer' onClick={handleRemoveTier}>Remover coluna</button>
+                            ) : null}
+                          </div>
+                            <div className='flex'>
+                              <button className='bg-gray-700 p-3 border-1 border-white rounded-lg hover:bg-gray-500 hover:cursor-pointer' onClick={handleDownload}>Baixar Tierlist</button>
+                            </div>
                         </div>
                     </div>
                     <div id='miscellaneous' className='flex flex-col gap-2 w-full bg-gray-500/30'>
