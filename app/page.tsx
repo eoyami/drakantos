@@ -49,14 +49,35 @@ export default function Home() {
         <div className="flex flex-col justify-center items-center mb-4 text-white">
           <h2 className="text-2xl">Conheça os Heróis</h2>
         </div>
-        <div className="flex justify-center items-center">
-          <div className="flex justify-center items-center gap-3 text-white flex-wrap">
+          <div className="flex flex-wrap text-white">
+            <div className="flex flex-col sm:flex-wrap gap-2 w-full sm:w-1/3 justify-center items-center mt-2 sm:mt-0">
+              <h3 className="text-3xl">TANK</h3>
+              <div className="flex flex-wrap gap-2 justify-center">
                 {characters.map((character) => (
-                    <Character key={character.id} id={character.id} smallImg={character.smallImg} bigImg="" description={character.description} name={character.name} alt={character.alt} type={character.type} onClick={() => {handleOpenModal(character)}} />
-                ))}
+              character.type === "tank" ? (
+                <Character key={character.id} id={character.id} smallImg={character.smallImg} bigImg="" description={character.description} name={character.name} alt={character.alt} type={character.type} onClick={() => {handleOpenModal(character)}} />
+              ) : null))}
+              </div>
+            </div>
+            <div className="flex flex-col sm sm:flex-wrap gap-2 w-full sm:w-1/3 justify-center items-center mt-2 sm:mt-0">
+              <h3 className="text-3xl">DPS</h3>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {characters.map((character) => (
+              character.type === "dps" ? (
+                <Character key={character.id} id={character.id} smallImg={character.smallImg} bigImg="" description={character.description} name={character.name} alt={character.alt} type={character.type} onClick={() => {handleOpenModal(character)}} />
+              ) : null))}
+              </div>
+            </div>
+            <div className="flex flex-col sm sm:flex-wrap gap-2 w-full sm:w-1/3 sm:justify-start justify-center items-center mt-2 sm:mt-0">
+              <h3 className="text-3xl">SUPPORT</h3>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {characters.map((character) => (
+              character.type === "support" ? (
+                <Character key={character.id} id={character.id} smallImg={character.smallImg} bigImg="" description={character.description} name={character.name} alt={character.alt} type={character.type} onClick={() => {handleOpenModal(character)}} />
+              ) : null))}
+              </div>
+            </div>
           </div>
-        </div>
-        
       </div>
     </main>
   );
