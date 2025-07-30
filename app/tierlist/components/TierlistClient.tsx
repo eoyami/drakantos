@@ -1,7 +1,7 @@
 'use client'
 import { characters } from '../../characters'
 import { useState } from 'react';
-import { DndContext, DragEndEvent } from '@dnd-kit/core';
+import { DndContext, DragEndEvent, useSensors, useSensor, TouchSensor } from '@dnd-kit/core';
 import type { CharacterProps } from '../../characters';
 import Droppable from './Droppable';
 import Draggable from './Draggable';
@@ -140,6 +140,18 @@ const handleDragEnd = (event: DragEndEvent) => {
     }
 
 
+    //SENSORS
+
+    const touchSensor = useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 250,
+        tolerance: 5
+      }
+    })
+
+    const sensors = useSensors(touchSensor)
+
+
 
   return (
           <div className="flex flex-col justify-center items-center w-full min-h-screen" >
@@ -149,7 +161,7 @@ const handleDragEnd = (event: DragEndEvent) => {
                 <h1 id="frase" className="text-center text-white text-3xl text-shadow-md lg:mt-[5rem] mt-[2rem]">WIP - TIERLIST</h1>
               </div>
               <div className="flex flex-col sm:flex-row mt-4 text-white w-full gap-2 bg-black/65 min-h-screen justify-start sm:justify-center">
-                <DndContext onDragEnd={handleDragEnd}>
+                <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
                     <div className='flex flex-col justify-between p-2 md:px-10 md:w-full py-3 justify-start items-start gap-2'>
                             <div className='flex flex-col justify-center w-full' ref={downloadRef}>
                                 {tierState.containers.slice(0,columnNumber).map((container) => (
