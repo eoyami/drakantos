@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { characters } from '../characters'
@@ -9,10 +8,9 @@ import ModalHistory from './components/ModalHistory'
 
 type CharacterHistory = {
     name: string,
-    history: string,
+    history: string[],
     smallImg: string
 }
-
 
 const page = () => {
 
@@ -30,13 +28,13 @@ const page = () => {
 
   return (
           <div className="flex flex-col justify-center items-center w-full min-h-screen" >
-            <div className="w-full min-h-screen bg-[url('/background_coliseu.png')] bg-cover bg-fixed md:bg-no-repeat sm:bg-fixed">
             <ModalHistory isOpen={isModalOpen} onClose={handleCloseModal} character={selectedCharacter}/>
+            <div className="w-full min-h-screen bg-[url('/background_coliseu.png')] bg-cover bg-fixed md:bg-no-repeat sm:bg-fixed">
             <div className="flex flex-col items-center w-full p-2">
               <div>
                 <h1 id="frase" className="text-center text-white text-3xl text-shadow-md lg:mt-[5rem] mt-[2rem]">WIP - História</h1>
               </div>
-              <div className="flex mt-4 text-white w-full gap-2">
+              <div className="flex mt-4 text-white w-full gap-0 sm:gap-2">
               <div className='flex flex-col p-2 md:px-5 bg-black/65 w-full md:w-[80%] py-3'>
                 <div className='flex flex-col flex-wrap gap-2 paragrafo'>
                   <div id='jogaveis'>
@@ -45,7 +43,7 @@ const page = () => {
                       <hr />
                       </div>
                   </div>
-                  <div className='flex flex-wrap gap-2'>
+                  <div className='flex flex-wrap gap-2 justify-center items-center'>
                     {characters.map(character => (
                   <Character key={character.id} name={character.name} smallImg={character.smallImg} alt={character.alt} onClick={() => {handleOpenModal(character)}}/>
                 ))}

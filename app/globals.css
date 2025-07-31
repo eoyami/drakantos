@@ -51,3 +51,12 @@ select {
 .tabs {
   border-bottom: 1px solid #fff;
 }
+
+
+.paragrafo::-webkit-scrollbar-track-piece {
+  background-color: #242424;
+}
+
+.paragrafo::-webkit-scrollbar-thumb {
+  background-color: #ffffff1c;
+}

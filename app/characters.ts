@@ -25,7 +25,7 @@ export type CharacterProps = {
     type: "support" | "tank" | "dps" | "none",
     description: string,
     skills: Record<number, Skills[]>,
-    history: string
+    history: string[]
   }
   
   export const characters: CharacterProps[] = [
@@ -114,7 +114,7 @@ export type CharacterProps = {
           }
           ]
         },
-        history: "WIP"
+        history: ["WIP"]
       }
     ,
     {
@@ -202,7 +202,13 @@ export type CharacterProps = {
           }
           ]
         },
-        history: ""
+        history: [
+          "Nascida um século após a fundação de Ereluna e treinada incansavelmente desde que aprendeu a andar em todas as artes e habilidades esperadas de uma princesa, Arryn logo descobriu que preferia cavalgar, caçar e praticar arco e flecha a todas as outras lições impostas. Por isso, o druida Faendar tornou-se seu professor favorito, levando-a, junto com outras crianças élficas, a acampamentos onde ensinava a história de sua terra.",
+          "Na infância, ela encontrou um aliado e companheiro em Irhaal Varieth, um órfão de sua idade resgatado pela Ordem dos Druidas. Assombrado pela lembrança de seus pais sendo mortos à força por humanos, um ressentimento profundo contra os humanos cresceu dentro dele. uma aura sombria costumava cercar Irhaal, afastando muitos, mas Arryn, tocada por sua dor, o tornou seu companheiro constante. Logo descobriram seu amor em comum pela caça, pelas montarias e pelo combate. Arryn com seu arco, e Irhaal com suas lâminas gêmeas.",
+          "A proximidade entre Irhaal e Arryn causava complicações na escolha de um consorte adequado para ela, já que sua presença intimidadora afastava potenciais pretendentes. Embora Arryn nutrisse sentimentos por Irhaal, sua família não o considerava um par apropriado por sua falta de status. Apesar disso, Arryn manteve-se firme, recusando-se a considerar qualquer proposta sem antes ouvir a opinião de Irhaal. Valorizava profundamente sua perspectiva, mesmo sem a intenção de que ele afastasse os pretendentes de propósito.",
+          "Por mais que adorasse a vida ativa de patrulheira, Arryn desprezava as tramas sufocantes e confusas da Corte élfica. Lá, sentia-se mais como presa do que caçadora, mais como um troféu do que uma competidora. Por isso, usava qualquer desculpa para evitar a Corte da Rainha, preferindo patrulhar as fronteiras de Ereluna ao lado de Irhaal, em busca de invasores e espiões. Juntos, haviam capturado e enfrentado diversos intrusos, sempre com um forte senso de dever.No entanto, por vezes, Arryn sentia-se desconfortável com a intensidade da retaliação de Irhaal contra humanos. Esses momentos a faziam refletir, e ela secretamente desejava que, com o tempo, Irhaal pudesse curar suas feridas e enxergar além do ódio",
+          "Apesar dessas preocupações, Arryn jamais duvidou de que Irhaal pudesse ser redimido. Via nele não apenas a sombra do passado, mas o potencial de um futuro mais luminoso. Essa crença, somada ao laço profundo que compartilhavam, tornou-se a base de sua lealdade inabalável a ele, mesmo diante das complexidades do mundo ao redor."
+        ]
     },
     {
       id: 3,
@@ -213,7 +219,7 @@ export type CharacterProps = {
       type: "support",
       description: "Byron é um elementalista que manipula os elementos para proteger aliados e desferir ataques devastadores contra inimigos.",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 4,
@@ -224,7 +230,7 @@ export type CharacterProps = {
       type: "tank",
       description: "Iris é uma ilusionista que utiliza magia para confundir inimigos e proteger seus aliados com escudos mágicos.",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 5,
@@ -235,7 +241,7 @@ export type CharacterProps = {
       type: "support",
       description: "Kavras é um necromante poderoso, capaz de invocar os mortos e manipular a energia vital para auxiliar seus aliados.",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 6,
@@ -246,7 +252,7 @@ export type CharacterProps = {
       type: "tank",
       description: "Korz é um guerreiro imponente, cuja força bruta e resistência o tornam uma muralha intransponível no campo de batalha.",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 7,
@@ -257,7 +263,7 @@ export type CharacterProps = {
       type: "tank",
       description: "Ojore é um defensor incansável, sempre na linha de frente para proteger seus companheiros com coragem e determinação.",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 8,
@@ -268,7 +274,7 @@ export type CharacterProps = {
       type: "dps",
       description: "Ophis é uma feiticeira misteriosa que canaliza o poder do caos para desferir ataques mágicos de grande intensidade.",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 9,
@@ -279,7 +285,7 @@ export type CharacterProps = {
       type: "dps",
       description: "Orbryn é um arqueiro preciso, cuja habilidade com o arco é incomparável, atingindo alvos com letalidade à distância.",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 10,
@@ -290,7 +296,7 @@ export type CharacterProps = {
       type: "dps",
       description: "Reya é uma guerreira elétrica, que combina velocidade e ataques de raio para eliminar seus inimigos rapidamente.",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 11,
@@ -301,7 +307,7 @@ export type CharacterProps = {
       type: "support",
       description: "Thomas é um bardo felino que utiliza melodias encantadoras para fortalecer aliados e enfraquecer adversários.",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 12,
@@ -312,7 +318,7 @@ export type CharacterProps = {
       type: "tank",
       description: "Urijor, conhecido como o 'Druida Louco', manipula a natureza de forma imprevisível para proteger e atacar com ferocidade.",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 13,
@@ -323,7 +329,7 @@ export type CharacterProps = {
       type: "support",
       description: "PLACEHOLDER",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 14,
@@ -334,7 +340,7 @@ export type CharacterProps = {
       type: "dps",
       description: "PLACEHOLDER",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 15,
@@ -345,7 +351,7 @@ export type CharacterProps = {
       type: "tank",
       description: "PLACEHOLDER",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 16,
@@ -356,7 +362,7 @@ export type CharacterProps = {
       type: "support",
       description: "PLACEHOLDER",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 17,
@@ -367,7 +373,7 @@ export type CharacterProps = {
       type: "tank",
       description: "PLACEHOLDER",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 18,
@@ -378,7 +384,7 @@ export type CharacterProps = {
       type: "tank",
       description: "PLACEHOLDER",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 19,
@@ -389,7 +395,7 @@ export type CharacterProps = {
       type: "dps",
       description: "PLACEHOLDER",
       skills: [],
-      history: ""
+      history: [""]
     },
     {
       id: 20,
@@ -400,7 +406,7 @@ export type CharacterProps = {
       type: "support",
       description: "PLACEHOLDER",
       skills: [],
-      history: ""
+      history: [""]
     },
   ];
   

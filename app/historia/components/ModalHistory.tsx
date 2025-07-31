@@ -4,7 +4,7 @@ import { MdClose } from "react-icons/md";
 
 type CharacterHistory = {
     name: string,
-    history: string,
+    history: string[],
     smallImg: string
 }
 
@@ -24,21 +24,24 @@ const ModalHistory = ({isOpen, onClose, character}: ModalProps) => {
           <div className="relative flex justify-center items-center bg-black/80 text-white" >
           <button className='absolute top-0 right-0 text-white text-4xl hover:cursor-pointer' onClick={() => {onClose()}}><MdClose /></button>
           {character && (
-            <div className='flex flex-col md:flex-row overflow-hidden justify-center items-center h-full w-80 md:w-full rounded'>
-              <div className="relative w-96 max-w-full aspect-square mx-auto">
+            <div className='flex flex-col justify-center items-center h-full w-96 p-2 md:w-full rounded' onClick={(e) => {e.stopPropagation()}}>
+              <div className="relative w-24 max-w-full aspect-square mx-auto">
                 <Image
                   src={character.smallImg}
                   alt={character.name}
                   fill
                   style={{ objectFit: 'contain' }}
-                  sizes="(max-width: 640px) 100vw, 224px"
+                  sizes="(max-width: 200px) 100vw, 224px"
                   priority
                 />
               </div>
-              <div className='flex flex-col justify-center items-center h-full md:w-96 w-full p-4 gap-3'>
+              <div className='flex flex-col justify-center items-center h-full sm:h-96'>
                 <h1 className='text-3xl'>{character.name.toUpperCase()}</h1>
-                <h1 className='text-center'>{character.history}</h1>
-                <div className='flex flex-col justify-center items-center'>
+                
+                <div className='flex flex-col overflow-y-auto max-h-96 flex-1 px-2 border-1 border-white space-y-3 paragrafo'>
+                    {character.history.map((paragrafo, i) => (
+                    <p key={i} className='text text-left mt-2'>{paragrafo}</p>
+                ))}
                 </div>
               </div>
             </div>
