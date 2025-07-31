@@ -43,26 +43,13 @@ const page = () => {
                       <hr />
                       </div>
                   </div>
-                  <div className='flex flex-wrap gap-2 justify-center items-center'>
+                  <div className='flex flex-wrap justify-center items-center gap-2'>
                     {characters.map(character => (
                   <Character key={character.id} name={character.name} smallImg={character.smallImg} alt={character.alt} onClick={() => {handleOpenModal(character)}}/>
                 ))}
                   </div>
                 </div>
-                {
-                
-                /* <div className='paragrafo'>
-                  <div id='sobre'>
-                    <div className='title'>
-                      <h3 className='text-2xl'>Protótipo - Título</h3>
-                      <hr />
-                      </div>
-                  </div>
-                  <div className='text'>
-                    <p>Protótipo - História</p>
-                  </div>
-                </div> */}
-                {/* FIM DO CONTEÚDO */}
+                <div className='flex justify-end'>Contribuidores: Kazu</div>
               </div>
               <div className='relative flex indice'>
                 <div className='hidden md:flex flex-col h-max bg-[#242424]/50 p-3 fixed w-full'>
