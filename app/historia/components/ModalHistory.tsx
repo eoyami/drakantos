@@ -24,7 +24,7 @@ const ModalHistory = ({isOpen, onClose, character}: ModalProps) => {
           <div className="relative flex justify-center items-center bg-black/80 text-white" >
           <button className='absolute top-0 right-0 text-white text-4xl hover:cursor-pointer' onClick={() => {onClose()}}><MdClose /></button>
           {character && (
-            <div className='flex flex-col justify-center items-center h-full w-96 p-2 md:w-full rounded' onClick={(e) => {e.stopPropagation()}}>
+            <div className='flex flex-col justify-center items-center h-full w-96 p-2 md:min-w-full rounded' onClick={(e) => {e.stopPropagation()}}>
               <div className="relative w-24 max-w-full aspect-square mx-auto">
                 <Image
                   src={character.smallImg}
