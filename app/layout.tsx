@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import { Analytics } from "@vercel/analytics/react"
 import Footer from "./components/Footer";
 import Portrait from "../public/portrait.jpg";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const openGraphImage = {
   url: Portrait.src,
@@ -68,6 +69,7 @@ export default function RootLayout({
         <Navbar/>
         {children}
         <Analytics/>
+        <SpeedInsights/>
       </div>
       <Footer/>
       </body>
