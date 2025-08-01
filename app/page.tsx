@@ -51,7 +51,7 @@ export default function Home() {
         </div>
           <div className="flex flex-wrap text-white">
             <div className="flex flex-col sm:flex-wrap gap-2 w-full sm:w-1/3 justify-center items-center mt-2 sm:mt-0">
-              <h3 className="text-3xl">TANK</h3>
+              <h3 className="text-3xl">Defensivo</h3>
               <div className="flex flex-wrap gap-2 justify-center">
                 {characters.map((character) => (
               character.type === "tank" ? (
@@ -60,7 +60,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col sm sm:flex-wrap gap-2 w-full sm:w-1/3 justify-center items-center mt-2 sm:mt-0">
-              <h3 className="text-3xl">DPS</h3>
+              <h3 className="text-3xl">Ofensivo</h3>
               <div className="flex flex-wrap gap-2 justify-center">
                 {characters.map((character) => (
               character.type === "dps" ? (
@@ -69,7 +69,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col sm sm:flex-wrap gap-2 w-full sm:w-1/3 sm:justify-start justify-center items-center mt-2 sm:mt-0">
-              <h3 className="text-3xl">SUPPORT</h3>
+              <h3 className="text-3xl">Suporte</h3>
               <div className="flex flex-wrap gap-2 justify-center">
                 {characters.map((character) => (
               character.type === "support" ? (
