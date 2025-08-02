@@ -158,6 +158,7 @@ const handleDragEnd = (event: DragEndEvent) => {
                 <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
                     <div className='flex flex-col justify-between p-2 md:px-10 md:w-full py-3 justify-start items-start gap-2'>
                             <div className='flex flex-col justify-center w-full' ref={downloadRef}>
+                              <input className='text-center text-2xl outline-none bg-black/30 rounded' type="text" placeholder='Coloque aqui um título' />
                                 {tierState.containers.slice(0,columnNumber).map((container) => (
                                     <SortableContext key={container.id} items={container.chars.map(c => c.id.toString())}>
                                         <Droppable id={`container-${container.id}`} title={container.title} color={container.color}>
