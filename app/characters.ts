@@ -399,7 +399,7 @@ export type CharacterProps = {
       type: "dps",
       description: "PLACEHOLDER",
       skills: [],
-      history: [""]
+      history: ["WIP"]
     },
     {
       id: 15,
@@ -443,7 +443,7 @@ export type CharacterProps = {
       type: "tank",
       description: "PLACEHOLDER",
       skills: [],
-      history: [""]
+      history: ["WIP"]
     },
     {
       id: 18,
