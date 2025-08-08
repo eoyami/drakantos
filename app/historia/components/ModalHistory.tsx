@@ -38,7 +38,7 @@ const ModalHistory = ({isOpen, onClose, character}: ModalProps) => {
               <div className='flex flex-col justify-center h-full sm:h-96'>
                 <h1 className='text-3xl text-center'>{character.name.toUpperCase()}</h1>
                 
-                <div className='flex flex-col overflow-y-auto max-h-96 px-2 border-1 border-white space-y-3 paragrafo'>
+                <div className='flex flex-col overflow-y-auto min-w-40 max-h-96 px-2 border-1 border-white space-y-3 paragrafo'>
                     {character.history.map((paragrafo, i) => (
                     <p key={i} className='text text-left mt-2'>{paragrafo}</p>
                 ))}
